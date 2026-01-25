@@ -2,177 +2,145 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft Braunschweig | System</title>
+    <title>Code-Werft System</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#0d1117">
+
     <style>
-        /* Klassisches CSS für maximale Kompatibilität ab Android 4.4 */
         body {
             background-color: #0b0e14;
             color: #d1d5db;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding: 0;
-            display: -webkit-flex;
             display: flex;
-            -webkit-justify-content: center;
             justify-content: center;
-            -webkit-align-items: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .main-container {
+        .app-shell {
             background-color: #161b22;
-            width: 90%;
-            max-width: 950px;
-            margin: 20px auto;
-            border-radius: 12px;
+            width: 95%;
+            max-width: 1000px;
+            border-radius: 15px;
             border: 1px solid #30363d;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: -webkit-flex;
             display: flex;
+            flex-direction: row;
             overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
 
-        /* Linke Spalte: Branding */
+        /* Sidebar */
         .sidebar {
             background-color: #0d1117;
-            padding: 40px 30px;
             width: 35%;
+            padding: 40px 20px;
             text-align: center;
             border-right: 1px solid #30363d;
         }
 
-        .logo-box {
-            font-size: 70px;
-            margin-bottom: 20px;
-            background: #1f6feb;
-            width: 120px;
-            height: 120px;
-            line-height: 120px;
-            border-radius: 20px;
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #1f6feb, #094cb3);
+            border-radius: 25px;
             margin: 0 auto 20px;
-            color: #ffffff;
-            box-shadow: 0 0 20px rgba(31, 111, 235, 0.4);
-        }
-
-        .sidebar h1 {
-            color: #ffffff;
-            font-size: 24px;
-            margin: 10px 0;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .sidebar p {
-            color: #58a6ff;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Rechte Spalte: Beschreibung */
-        .content {
-            padding: 40px;
-            width: 65%;
-        }
-
-        .content h2 {
-            color: #ffffff;
-            border-bottom: 2px solid #1f6feb;
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        .description-text {
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 25px 0;
-        }
-
-        .feature-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid #21262d;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-align-items: center;
-            align-items: center;
-        }
-
-        .feature-list li:before {
-            content: "✓";
-            color: #238636;
-            font-weight: bold;
-            margin-right: 15px;
-            font-size: 20px;
-        }
-
-        .badge {
-            background: #238636;
+            line-height: 100px;
+            font-size: 60px;
             color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-left: 10px;
-            vertical-align: middle;
+            box-shadow: 0 0 15px rgba(31, 111, 235, 0.4);
         }
 
-        /* Speziell für Tablets & Laptops (ab 7 Zoll) */
-        @media screen and (max-width: 768px) {
-            .main-container {
-                -webkit-flex-direction: column;
-                flex-direction: column;
-                width: 95%;
-            }
-            .sidebar {
-                width: 100%;
-                padding: 30px;
-                border-right: none;
-                border-bottom: 1px solid #30363d;
-                box-sizing: border-box;
-            }
-            .content {
-                width: 100%;
-                padding: 30px;
-                box-sizing: border-box;
-            }
+        /* Content Area */
+        .main-content {
+            width: 65%;
+            padding: 40px;
+        }
+
+        h1 { color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: #58a6ff; margin-top: 5px; font-size: 16px; }
+
+        .desc-box {
+            margin: 25px 0;
+            line-height: 1.6;
+            font-size: 15px;
+            color: #8b949e;
+        }
+
+        /* Installations- & Start-Button */
+        .action-area {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .btn-start {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(35, 134, 54, 0.3);
+        }
+
+        .btn-start:active { background-color: #2ea043; transform: translateY(2px); }
+
+        .install-hint {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #58a6ff;
+        }
+
+        /* Tablet/Mobile Anpassung */
+        @media (max-width: 768px) {
+            .app-shell { flex-direction: column; }
+            .sidebar, .main-content { width: 100%; box-sizing: border-box; }
+            .sidebar { border-right: none; border-bottom: 1px solid #30363d; }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-container">
+    <div class="app-shell">
         <div class="sidebar">
-            <div class="logo-box">⚓</div>
+            <div class="logo-container">⚓</div>
             <h1>Code-Werft</h1>
-            <p>Braunschweig</p>
-            <div style="margin-top: 30px; font-size: 12px; color: #8b949e;">
-                System OS: Android 4.4+ Ready
+            <h2>Digital System</h2>
+            <div style="margin-top: 40px; font-size: 11px; color: #484f58;">
+                Engine v3.0 | KitKat Verified
             </div>
         </div>
 
-        <div class="content">
-            <h2>Wetter-Monitor System <span class="badge">v2.1</span></h2>
-            
-            <div class="description-text">
-                <p>Willkommen in der digitalen Zentrale der Code-Werft. Dieses System wurde speziell für die Überwachung und den Vergleich von Klimadaten zwischen Norddeutschland und Nordafrika entwickelt.</p>
-                
-                <p>Die Anwendung dient als Schnittstelle für meteorologische Analysen und bietet eine präzise Gegenüberstellung der Wetterlagen unserer Standorte.</p>
+        <div class="main-content">
+            <h1>Systembeschreibung</h1>
+            <div class="desc-box">
+                Dieses Terminal dient der Fernüberwachung von meteorologischen Datenpunkten. 
+                Es wurde speziell für hochauflösende Tablet-Displays ab 7 Zoll optimiert 
+                und nutzt ressourcenschonende Protokolle für maximale Performance.
             </div>
 
-            <ul class="feature-list">
-                <li><strong>Echtzeit-Vergleich:</strong> Analyse zwischen Braunschweig (DE) und Kairo (EG).</li>
-                <li><strong>Optimierte Schnittstelle:</strong> Hohe Kontraste für perfekte Lesbarkeit auf Tablet-Displays.</li>
-                <li><strong>Low-Resources:</strong> Kompatibel mit Android KitKat Systemen (ab 7 Zoll).</li>
-                <li><strong>Daten-Präzision:</strong> Nutzung globaler Satellitendaten für exakte Temperaturwerte.</li>
-            </ul>
+            <div class="action-area">
+                <a href="#" onclick="alert('Wetter-Monitor wird initialisiert...');" class="btn-start">APP STARTEN</a>
+                <div class="install-hint">
+                    Tipp: Im Browser-Menü auf "Zum Startbildschirm hinzufügen" klicken für Fullscreen-Modus.
+                </div>
+            </div>
 
-            <div style="background: #0d1117; padding: 15px; border-radius: 8px; border-left: 4px solid #1f6feb; font-size: 14px;">
-                <strong>Status:</strong> Das System läuft stabil im Dark-Mode. Alle Satellitenverbindungen sind aktiv.
+            <div style="margin-top: 30px; color: #d1d5db; font-size: 14px;">
+                <strong>Features:</strong><br>
+                • Dark-Interface für Nachteinsätze<br>
+                • Offline-Caching Architektur<br>
+                • Multi-Location Monitoring
             </div>
         </div>
     </div>
