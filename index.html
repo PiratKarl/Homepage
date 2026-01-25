@@ -3,101 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft Braunschweig | Dark Mode</title>
+    <title>Code-Werft Braunschweig</title>
     <style>
-        :root {
-            --bg-color: #0d1117;       /* Sehr dunkles Blau-Grau */
-            --card-bg: #161b22;        /* Etwas helleres Grau für die Boxen */
-            --text-main: #c9d1d9;      /* Hellgrauer Text */
-            --accent-blue: #58a6ff;    /* Leuchtendes Blau */
-            --accent-gold: #ffcc00;    /* Gold für Highlights */
-            --border: #30363d;
-        }
-
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: #f0f4f8;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            color: #333;
         }
 
-        .main-frame {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            max-width: 850px;
-            width: 90%;
+        .container {
+            background: white;
             padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             display: flex;
             flex-direction: row; /* Nebeneinander */
+            align-items: center;
             gap: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 800px;
+            width: 90%;
         }
 
-        /* Linke Seite: Branding */
-        .branding {
-            flex: 1;
+        /* Linke Seite: Logo */
+        .logo-section {
+            flex: 0 0 auto;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-right: 1px solid var(--border);
+            border-right: 2px solid #f0f0f0;
             padding-right: 40px;
         }
 
-        .logo-circle {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, #1f6feb, #0d419d);
-            border-radius: 30%; /* Abgerundetes Quadrat-Logo */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 70px;
-            margin: 0 auto 20px;
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
+        .anker-logo {
+            font-size: 80px;
+            margin-bottom: 10px;
         }
 
-        .branding h1 {
-            color: white;
-            margin: 10px 0 5px;
-            font-size: 26px;
-            letter-spacing: 2px;
-        }
-
-        .branding p {
-            color: var(--accent-blue);
-            font-size: 14px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        /* Rechte Seite: Weather App */
-        .weather-section {
-            flex: 1.5;
-        }
-
-        .weather-section h2 {
-            color: white;
-            margin-top: 0;
+        .logo-text {
+            font-weight: bold;
             font-size: 20px;
-            border-bottom: 2px solid var(--accent-blue);
-            display: inline-block;
-            padding-bottom: 5px;
-            margin-bottom: 25px;
+            color: #003366;
+            line-height: 1.2;
         }
 
-        .weather-row {
-            background-color: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin-bottom: 15px;
+        /* Rechte Seite: Wetter */
+        .app-section {
+            flex: 1;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #003366;
+        }
+
+        .weather-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
             display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+        }
+
+        .temp {
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .footer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        /* Responsive: Auf dem Handy untereinander */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .logo-section {
+                border-right: none;
+                border-bottom: 2px solid #f0f0f0;
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-section">
+            <div class="anker-logo">⚓</div>
+            <div class="logo-text">CODE-WERFT<br>BRAUNSCHWEIG</div>
+        </div>
+
+        <div class="app-section">
+            <h2>Wetter-Monitor</h2>
+            
+            <div class="weather-box">
+                <span>Braunschweig</span>
+                <span id="temp-bs" class="temp">--°C</span>
+            </div>
+
+            <div class="weather-box">
+                <span>Kairo</span>
+                <span id="temp-kairo" class="temp">--°C</span>
+            </div>
+
+            <div class="footer" id="last-update">
+                Daten werden geladen...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchWeather() {
+            try {
+                // Braunschweig
+                const resBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
+                const dataBS = await resBS.json();
+                document.getElementById('temp-bs').innerText = Math.round(dataBS.current_weather.temperature) + '°C';
+
+                // Kairo
+                const resKairo = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
+                const dataKairo = await resKairo.json();
+                document.getElementById('temp-kairo').innerText = Math.round(dataKairo.current_weather.temperature) + '°C';
+
+                const now = new Date();
+                document.getElementById('last-update').innerText = 'Letztes Update: ' + now.toLocaleTimeString('de-DE');
+            } catch (error) {
+                document.getElementById('last-update').innerText = 'Fehler beim Laden.';
+            }
+        }
+
+        fetchWeather();
+        setInterval(fetchWeather, 600000); // Alle 10 Min
+    </script>
+</body>
+</html>
             justify-content: space-between;
             align-items: center;
             transition: transform 0.2s;
