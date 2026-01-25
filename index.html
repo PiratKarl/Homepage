@@ -1,103 +1,192 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft | Digitaler Denkmalschutz</title>
+    <title>Code-Werft Braunschweig</title>
     <style>
+        :root {
+            --primary: #003366; /* Werft-Blau */
+            --accent: #ffcc00;
+            --bg: #f4f7f9;
+            --card: #ffffff;
+        }
+
         body {
-            background-color: #121212;
-            color: #e0e0e0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: #333;
             margin: 0;
-            padding: 0;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-        header {
-            background-color: #1e1e1e;
-            width: 100%;
-            padding: 30px 0;
-            text-align: center;
-            border-bottom: 3px solid #00ffcc;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        }
-        h1 { margin: 0; font-size: 2.5rem; color: #fff; letter-spacing: 2px; text-transform: uppercase; }
-        .subtitle { color: #00ffcc; font-size: 1.1rem; margin-top: 10px; font-weight: bold; }
-        
+
         .container {
-            max-width: 800px;
-            width: 90%;
-            padding: 40px 0;
-            flex: 1;
-        }
-        
-        .intro-text {
-            text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 50px;
-            color: #aaa;
-            border-bottom: 1px solid #333;
-            padding-bottom: 30px;
-        }
-
-        /* PROJEKT KARTEN */
-        .project-card {
-            background: #1e1e1e;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            background: var(--card);
+            max-width: 900px;
+            width: 95%;
+            margin: 20px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             display: flex;
-            flex-direction: column;
-            border: 1px solid #333;
+            flex-direction: row; /* Nebeneinander */
+            align-items: center;
+            gap: 40px;
         }
-        .project-card:hover { transform: translateY(-5px); border-color: #00ffcc; }
 
-        .card-content { padding: 30px; flex: 1; }
-        .card-title { font-size: 1.8rem; color: #fff; margin-top: 0; margin-bottom: 10px; }
-        .card-desc { color: #ccc; line-height: 1.6; margin-bottom: 25px; font-size: 1.1rem; }
-        
-        .btn {
-            display: inline-block;
-            background: #00ffcc;
-            color: #000;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            transition: background 0.2s;
+        /* Linke Seite: Logo & Branding */
+        .branding {
+            flex: 1;
+            text-align: center;
+            border-right: 2px solid #eee;
+            padding-right: 40px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 80px;
+            box-shadow: 0 5px 15px rgba(0,51,102,0.3);
+        }
+
+        .branding h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--primary);
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .btn:hover { background: #fff; }
 
-        .footer {
-            padding: 30px;
-            text-align: center;
-            color: #555;
-            font-size: 0.9rem;
-            width: 100%;
-            border-top: 1px solid #333;
-            background: #080808;
+        .branding p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Rechte Seite: Wetter-App */
+        .app-content {
+            flex: 1.5;
+        }
+
+        .weather-card {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--primary);
+        }
+
+        .city-name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .temp {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .update-time {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        /* Responsiv: Auf dem Handy untereinander */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .branding {
+                border-right: none;
+                border-bottom: 2px solid #eee;
+                padding-right: 0;
+                padding-bottom: 20px;
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>⚓ CODE-WERFT</h1>
-        <div class="subtitle">DIGITALER DENKMALSCHUTZ AUS BRAUNSCHWEIG</div>
-    </header>
+<div class="container">
+    
+    <div class="branding">
+        <div class="logo">⚓</div>
+        <h1>Code-Werft</h1>
+        <p>Braunschweig & Digital World</p>
+    </div>
 
-    <div class="container">
-        <div class="intro-text">
-            <b>Wir geben alter Hardware eine zweite Chance.</b><br><br>
-            Statt Elektroschrott: Smarte Web-Apps, optimiert für Tablets,<br>die andere Hersteller schon längst aufgegeben haben.
+    <div class="app-content">
+        <h2 style="margin-top: 0;">Wetter-Monitor</h2>
+        
+        <div class="weather-card">
+            <div>
+                <span class="city-name">Braunschweig</span><br>
+                <small>Heimathafen</small>
+            </div>
+            <div id="temp-bs" class="temp">--°C</div>
+        </div>
+
+        <div class="weather-card" style="border-left-color: #ff6600;">
+            <div>
+                <span class="city-name">Kairo</span><br>
+                <small>Ägypten</small>
+            </div>
+            <div id="temp-kairo" class="temp">--°C</div>
+        </div>
+
+        <div class="update-time" id="last-update">
+            Daten werden geladen...
+        </div>
+    </div>
+
+</div>
+
+<script>
+    async function fetchWeather() {
+        try {
+            // Braunschweig Daten (Open-Meteo API)
+            const resBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
+            const dataBS = await resBS.json();
+            document.getElementById('temp-bs').innerText = Math.round(dataBS.current_weather.temperature) + '°C';
+
+            // Kairo Daten
+            const resKairo = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
+            const dataKairo = await resKairo.json();
+            document.getElementById('temp-kairo').innerText = Math.round(dataKairo.current_weather.temperature) + '°C';
+
+            const now = new Date();
+            document.getElementById('last-update').innerText = 'Letztes Update: ' + now.toLocaleTimeString('de-DE') + ' Uhr';
+        } catch (error) {
+            console.error('Fehler beim Laden:', error);
+            document.getElementById('last-update').innerText = 'Fehler beim Laden der Daten.';
+        }
+    }
+
+    // Beim Start laden
+    fetchWeather();
+    // Alle 10 Minuten aktualisieren
+    setInterval(fetchWeather, 600000);
+</script>
+
+</body>
+</html>
         </div>
 
         <div class="project-card">
