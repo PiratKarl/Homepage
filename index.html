@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Code-Werft System</title>
+    <title>AURA WEATHER | Code-Werft</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
@@ -10,140 +10,219 @@
     <meta name="theme-color" content="#0d1117">
 
     <style>
+        /* Robustes CSS für KitKat & Tablet-Optimierung */
         body {
             background-color: #0b0e14;
             color: #d1d5db;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
+            display: -webkit-flex;
             display: flex;
+            -webkit-justify-content: center;
             justify-content: center;
+            -webkit-align-items: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .app-shell {
+        .app-container {
             background-color: #161b22;
             width: 95%;
             max-width: 1000px;
-            border-radius: 15px;
             border: 1px solid #30363d;
+            border-radius: 12px;
+            display: -webkit-flex;
             display: flex;
             flex-direction: row;
             overflow: hidden;
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
         }
 
-        /* Sidebar */
+        /* Sidebar: Branding */
         .sidebar {
             background-color: #0d1117;
             width: 35%;
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
             border-right: 1px solid #30363d;
         }
 
-        .logo-container {
-            width: 100px;
-            height: 100px;
+        .aura-icon {
+            width: 110px;
+            height: 110px;
             background: linear-gradient(135deg, #1f6feb, #094cb3);
             border-radius: 25px;
             margin: 0 auto 20px;
-            line-height: 100px;
+            line-height: 110px;
             font-size: 60px;
-            color: white;
-            box-shadow: 0 0 15px rgba(31, 111, 235, 0.4);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(31, 111, 235, 0.4);
         }
 
-        /* Content Area */
+        .sidebar h1 {
+            color: #ffffff;
+            font-size: 26px;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .sidebar .version {
+            color: #58a6ff;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Hauptbereich */
         .main-content {
             width: 65%;
             padding: 40px;
         }
 
-        h1 { color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
-        h2 { color: #58a6ff; margin-top: 5px; font-size: 16px; }
+        h2 { color: #ffffff; border-bottom: 2px solid #1f6feb; padding-bottom: 10px; margin-top: 0; font-size: 20px; }
 
-        .desc-box {
-            margin: 25px 0;
+        .system-desc {
             line-height: 1.6;
             font-size: 15px;
             color: #8b949e;
+            margin: 20px 0;
         }
 
-        /* Installations- & Start-Button */
-        .action-area {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            text-align: center;
+        .specs {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #30363d;
         }
 
+        .spec-item {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #d1d5db;
+        }
+
+        .spec-item strong { color: #58a6ff; }
+
+        /* Wetter-Display (wird nach Start eingeblendet) */
+        #weather-display {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+        }
+
+        .weather-row {
+            display: flex;
+            justify-content: space-between;
+            background: #21262d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Button */
         .btn-start {
             background-color: #238636;
-            color: white;
+            color: #ffffff;
             border: none;
-            padding: 15px 35px;
+            padding: 18px 40px;
             font-size: 18px;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(35, 134, 54, 0.3);
+            width: 100%;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(35, 134, 54, 0.3);
         }
 
-        .btn-start:active { background-color: #2ea043; transform: translateY(2px); }
+        .btn-start:hover { background-color: #2ea043; }
 
-        .install-hint {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #58a6ff;
-        }
-
-        /* Tablet/Mobile Anpassung */
+        /* Tablet Anpassung (7 Zoll+) */
         @media (max-width: 768px) {
-            .app-shell { flex-direction: column; }
-            .sidebar, .main-content { width: 100%; box-sizing: border-box; }
-            .sidebar { border-right: none; border-bottom: 1px solid #30363d; }
+            .app-container { -webkit-flex-direction: column; flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #30363d; padding: 30px 0; }
+            .main-content { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-shell">
-        <div class="sidebar">
-            <div class="logo-container">⚓</div>
-            <h1>Code-Werft</h1>
-            <h2>Digital System</h2>
-            <div style="margin-top: 40px; font-size: 11px; color: #484f58;">
-                Engine v3.0 | KitKat Verified
-            </div>
-        </div>
-
-        <div class="main-content">
-            <h1>Systembeschreibung</h1>
-            <div class="desc-box">
-                Dieses Terminal dient der Fernüberwachung von meteorologischen Datenpunkten. 
-                Es wurde speziell für hochauflösende Tablet-Displays ab 7 Zoll optimiert 
-                und nutzt ressourcenschonende Protokolle für maximale Performance.
-            </div>
-
-            <div class="action-area">
-                <a href="#" onclick="alert('Wetter-Monitor wird initialisiert...');" class="btn-start">APP STARTEN</a>
-                <div class="install-hint">
-                    Tipp: Im Browser-Menü auf "Zum Startbildschirm hinzufügen" klicken für Fullscreen-Modus.
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; color: #d1d5db; font-size: 14px;">
-                <strong>Features:</strong><br>
-                • Dark-Interface für Nachteinsätze<br>
-                • Offline-Caching Architektur<br>
-                • Multi-Location Monitoring
-            </div>
+<div class="app-container">
+    <div class="sidebar">
+        <div class="aura-icon">☁</div>
+        <h1>AURA</h1>
+        <div class="version">WEATHER ENGINE</div>
+        <div style="margin-top: 40px; font-size: 10px; color: #484f58;">
+            CODE-WERFT BRAUNSCHWEIG<br>SYSTEM-READY: ANDROID 4.4
         </div>
     </div>
 
+    <div class="main-content">
+        <h2>System-Konfiguration</h2>
+        
+        <div class="system-desc">
+            <strong>AURA WEATHER</strong> ist die dedizierte Überwachungseinheit der Code-Werft. Optimiert für den Einsatz auf Tablets ab 7 Zoll, liefert das System präzise Klimadaten zwischen dem Heimathafen Braunschweig und der Fernstation Kairo.
+        </div>
+
+        <div class="specs">
+            <div class="spec-item"><strong>Hardware:</strong> Tablet/Laptop Optimized</div>
+            <div class="spec-item"><strong>OS:</strong> KitKat 4.4 / Linux / Win</div>
+            <div class="spec-item"><strong>Service:</strong> Climate Monitoring</div>
+            <div class="spec-item"><strong>Status:</strong> Ready for Deployment</div>
+        </div>
+
+        <button class="btn-start" id="startBtn" onclick="startAura()">AURA STARTEN</button>
+
+        <div id="weather-display">
+            <div class="weather-row">
+                <span>Braunschweig (DE)</span>
+                <span id="bs-temp" style="color:#ffcc00; font-weight:bold;">--°C</span>
+            </div>
+            <div class="weather-row">
+                <span>Kairo (EG)</span>
+                <span id="kairo-temp" style="color:#ffcc00; font-weight:bold;">--°C</span>
+            </div>
+            <p id="status-text" style="font-size:11px; color:#58a6ff; text-align:right;">Synchronisierung aktiv...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function startAura() {
+        var btn = document.getElementById('startBtn');
+        var display = document.getElementById('weather-display');
+        
+        btn.innerText = "INITIALISIERE...";
+        btn.style.backgroundColor = "#1f6feb";
+        
+        try {
+            // Wetter Braunschweig
+            const resBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
+            const dataBS = await resBS.json();
+            document.getElementById('bs-temp').innerText = Math.round(dataBS.current_weather.temperature) + '°C';
+
+            // Wetter Kairo
+            const resKairo = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
+            const dataKairo = await resKairo.json();
+            document.getElementById('temp-kairo').innerText = Math.round(dataKairo.current_weather.temperature) + '°C'; // Falls ID oben falsch war
+            document.getElementById('kairo-temp').innerText = Math.round(dataKairo.current_weather.temperature) + '°C';
+
+            const now = new Date();
+            document.getElementById('status-text').innerText = 'Letzter Daten-Sync: ' + now.toLocaleTimeString('de-DE');
+            
+            // App-Effekt: Erst nach Laden anzeigen
+            display.style.display = 'block';
+            btn.innerText = "SYSTEM AKTIV";
+            btn.style.backgroundColor = "#238636";
+        } catch (e) {
+            btn.innerText = "SYNC FEHLER";
+            alert("Satelliten-Verbindung fehlgeschlagen. Bitte Internet prüfen.");
+        }
+    }
+</script>
+
 </body>
 </html>
+ 
