@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft Braunschweig</title>
+    <title>Code-Werft Braunschweig | Dark Mode</title>
     <style>
         :root {
-            --primary: #003366; /* Werft-Blau */
-            --accent: #ffcc00;
-            --bg: #f4f7f9;
-            --card: #ffffff;
+            --bg-color: #0d1117;       /* Sehr dunkles Blau-Grau */
+            --card-bg: #161b22;        /* Etwas helleres Grau für die Boxen */
+            --text-main: #c9d1d9;      /* Hellgrauer Text */
+            --accent-blue: #58a6ff;    /* Leuchtendes Blau */
+            --accent-gold: #ffcc00;    /* Gold für Highlights */
+            --border: #30363d;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: #333;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
             display: flex;
             justify-content: center;
@@ -23,81 +25,180 @@
             min-height: 100vh;
         }
 
-        .container {
-            background: var(--card);
-            max-width: 900px;
-            width: 95%;
-            margin: 20px;
-            padding: 40px;
+        .main-frame {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 850px;
+            width: 90%;
+            padding: 40px;
             display: flex;
             flex-direction: row; /* Nebeneinander */
-            align-items: center;
             gap: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Linke Seite: Logo & Branding */
+        /* Linke Seite: Branding */
         .branding {
             flex: 1;
             text-align: center;
-            border-right: 2px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--border);
             padding-right: 40px;
         }
 
-        .logo {
-            width: 150px;
-            height: 150px;
-            background-color: var(--primary);
-            border-radius: 50%;
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #1f6feb, #0d419d);
+            border-radius: 30%; /* Abgerundetes Quadrat-Logo */
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 70px;
             margin: 0 auto 20px;
-            color: white;
-            font-size: 80px;
-            box-shadow: 0 5px 15px rgba(0,51,102,0.3);
+            box-shadow: 0 0 20px rgba(88, 166, 255, 0.3);
         }
 
         .branding h1 {
-            margin: 0;
-            font-size: 24px;
-            color: var(--primary);
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            color: white;
+            margin: 10px 0 5px;
+            font-size: 26px;
+            letter-spacing: 2px;
         }
 
         .branding p {
-            color: #777;
+            color: var(--accent-blue);
             font-size: 14px;
+            margin: 0;
+            text-transform: uppercase;
         }
 
-        /* Rechte Seite: Wetter-App */
-        .app-content {
+        /* Rechte Seite: Weather App */
+        .weather-section {
             flex: 1.5;
         }
 
-        .weather-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 15px;
+        .weather-section h2 {
+            color: white;
+            margin-top: 0;
+            font-size: 20px;
+            border-bottom: 2px solid var(--accent-blue);
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
+        }
+
+        .weather-row {
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 15px 20px;
             margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-left: 5px solid var(--primary);
+            transition: transform 0.2s;
         }
 
-        .city-name {
-            font-weight: bold;
+        .weather-row:hover {
+            transform: scale(1.02);
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .city {
             font-size: 18px;
+            font-weight: 500;
         }
 
         .temp {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--accent-gold);
         }
+
+        .info-footer {
+            margin-top: 20px;
+            font-size: 11px;
+            color: #8b949e;
+            text-align: right;
+        }
+
+        /* Mobil-Ansicht: Untereinander auf kleinen Bildschirmen */
+        @media (max-width: 700px) {
+            .main-frame {
+                flex-direction: column;
+                padding: 25px;
+            }
+            .branding {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-frame">
+    
+    <div class="branding">
+        <div class="logo-circle">⚓</div>
+        <h1>Code-Werft</h1>
+        <p>Braunschweig</p>
+    </div>
+
+    <div class="weather-section">
+        <h2>System-Status: Wetter</h2>
+        
+        <div class="weather-row">
+            <div class="city">Braunschweig</div>
+            <div id="temp-bs" class="temp">--°C</div>
+        </div>
+
+        <div class="weather-row">
+            <div class="city">Kairo</div>
+            <div id="temp-kairo" class="temp">--°C</div>
+        </div>
+
+        <div class="info-footer" id="status-text">
+            Initialisiere Satellitenverbindung...
+        </div>
+    </div>
+
+</div>
+
+<script>
+    async function updateWeather() {
+        try {
+            // Wetter Braunschweig
+            const resBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
+            const dataBS = await resBS.json();
+            document.getElementById('temp-bs').innerText = Math.round(dataBS.current_weather.temperature) + '°C';
+
+            // Wetter Kairo
+            const resKairo = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
+            const dataKairo = await resKairo.json();
+            document.getElementById('temp-kairo').innerText = Math.round(dataKairo.current_weather.temperature) + '°C';
+
+            const now = new Date();
+            document.getElementById('status-text').innerText = 'Letzter Sync: ' + now.toLocaleTimeString('de-DE');
+        } catch (e) {
+            document.getElementById('status-text').innerText = 'Verbindungsfehler';
+        }
+    }
+
+    // Start
+    updateWeather();
+    // Refresh alle 15 Minuten
+    setInterval(updateWeather, 900000);
+</script>
+
+</body>
+</html>
 
         .update-time {
             font-size: 12px;
