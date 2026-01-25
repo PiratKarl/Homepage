@@ -2,142 +2,140 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Code-Werft | Digitaler Denkmalschutz & Software-Manufaktur</title>
+    <title>Code-Werft | Digitaler Denkmalschutz & Legacy Software</title>
     
-    <meta name="description" content="Code-Werft - Wir geben alter Hardware ein zweites Leben. Kostenlose Software-Lösungen wie Aura Weather, optimiert für Legacy-Geräte ab Android 4.4 KitKat.">
-    <meta name="keywords" content="Code-Werft, Aura Weather, Digitaler Denkmalschutz, Android 4.4, KitKat App, Tablet Wetterstation, Kostenlose Software, Braunschweig">
+    <meta name="description" content="Code-Werft Braunschweig - Wir geben alter Hardware ein zweites Leben. Entdecken Sie Aura Weather und weitere kostenlose Software für Legacy-Geräte ab Android 4.4.">
+    <meta name="keywords" content="Code-Werft, Aura Weather, Digitaler Denkmalschutz, Android 4.4, KitKat, Tablet App, Wetterstation, Legacy Edition">
     <meta name="author" content="Code-Werft">
     <meta name="robots" content="index, follow">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#0d1117">
 
     <style>
-        /* DARK THEME - OPTIMIERT FÜR LEGACY HARDWARE */
+        /* DARK THEME - OPTIMIERT FÜR ANDROID 4.4 KITKAT */
         body {
             background-color: #0d1117;
             color: #c9d1d9;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0; padding: 0;
             line-height: 1.6;
         }
 
+        /* HEADER */
         .header {
             background-color: #161b22;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
             border-bottom: 1px solid #30363d;
         }
+        .header h1 { color: #58a6ff; margin: 0; letter-spacing: 3px; text-transform: uppercase; font-size: 32px; }
+        .header p { color: #8b949e; margin: 10px 0 0; font-size: 16px; }
 
-        .header h1 {
-            color: #58a6ff;
-            margin: 0;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-size: 32px;
-        }
-
-        .main-container {
-            max-width: 1000px;
+        /* MAIN CONTENT */
+        .main-wrapper {
+            max-width: 1100px;
             margin: 40px auto;
             padding: 0 20px;
             display: -webkit-flex;
             display: flex;
         }
 
-        .sidebar {
-            -webkit-flex: 1; flex: 1;
-            padding-right: 30px;
-            border-right: 1px solid #30363d;
-        }
+        .sidebar { -webkit-flex: 1; flex: 1; padding-right: 30px; border-right: 1px solid #30363d; }
+        .content { -webkit-flex: 2.5; flex: 2.5; padding-left: 30px; }
 
-        .content { -webkit-flex: 2; flex: 2; padding-left: 30px; }
-
-        /* PRODUKT-KARTE */
+        /* PRODUKT-KARTEN */
         .card {
             background: #161b22;
             border: 1px solid #30363d;
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 30px;
-            position: relative;
         }
-
-        .product-title { color: #ffffff; margin-top: 0; font-size: 24px; }
+        .card h2 { color: #ffffff; margin-top: 0; }
         .badge { background: #238636; color: white; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 10px; }
 
-        /* DER REPARIERTE BUTTON */
-        .btn-action {
+        /* START-BUTTON */
+        .btn-launch {
             background-color: #238636;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 18px;
+            padding: 20px 40px;
+            font-size: 20px;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            margin: 20px 0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            margin-top: 20px;
+            text-transform: uppercase;
         }
-        .btn-action:hover { background-color: #2ea043; }
+        .btn-launch:active { background-color: #2ea043; }
 
-        /* WETTER-ANZEIGE (INITIAL VERSTECKT) */
-        #weather-result {
-            display: none;
-            background: #0d1117;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid #58a6ff;
-        }
-
-        .temp-row { display: flex; justify-content: space-between; margin: 10px 0; font-size: 18px; }
-
-        /* FOOTER MIT RECHTLICHEM */
-        .footer {
-            margin-top: 50px;
-            padding: 40px 20px;
-            background: #090c10;
-            text-align: center;
-            border-top: 1px solid #30363d;
-        }
-
-        .footer-nav { margin-bottom: 20px; }
-        .footer-nav a {
-            color: #8b949e;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .footer-nav a:hover { color: #58a6ff; }
-
-        /* MODALS (POPUP) */
-        .modal {
+        /* DAS NEUE APP-FENSTER (FULLSCREEN OVERLAY) */
+        #app-overlay {
             display: none;
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
+            background-color: #0b0e14;
+            z-index: 2000;
+            text-align: center;
         }
-        .modal-box {
+
+        .app-window {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .app-data-box {
             background: #161b22;
-            width: 85%; max-width: 600px;
-            margin: 10% auto;
+            border: 2px solid #58a6ff;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
             padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #30363d;
-            position: relative;
+            box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
         }
-        .close { position: absolute; top: 15px; right: 20px; color: #8b949e; cursor: pointer; font-size: 24px; }
+
+        .weather-val { font-size: 48px; font-weight: bold; color: #ffcc00; margin: 10px 0; }
+        .location-label { font-size: 18px; color: #8b949e; }
+
+        .btn-close {
+            background: transparent;
+            color: #8b949e;
+            border: 1px solid #30363d;
+            padding: 10px 20px;
+            margin-top: 40px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        /* FOOTER UNTEN */
+        .footer {
+            background: #090c10;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #30363d;
+            margin-top: 80px;
+        }
+        .footer-nav { margin-bottom: 25px; }
+        .footer-nav a { color: #8b949e; text-decoration: none; margin: 0 15px; font-size: 14px; font-weight: bold; cursor: pointer; }
+        .footer-nav a:hover { color: #58a6ff; }
+
+        /* MODALS (POPUP FÜR RECHTLICHES) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 3000; }
+        .modal-box { background: #161b22; width: 85%; max-width: 600px; margin: 10% auto; padding: 30px; border-radius: 12px; border: 1px solid #30363d; position: relative; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; color: #8b949e; cursor: pointer; }
 
         /* TABLET OPTIMIERUNG */
         @media (max-width: 768px) {
-            .main-container { -webkit-flex-direction: column; flex-direction: column; }
-            .sidebar { border-right: none; border-bottom: 1px solid #30363d; padding-right: 0; padding-bottom: 20px; margin-bottom: 30px; }
+            .main-wrapper { -webkit-flex-direction: column; flex-direction: column; }
+            .sidebar { border-right: none; border-bottom: 1px solid #30363d; padding-right: 0; padding-bottom: 30px; margin-bottom: 30px; }
             .content { padding-left: 0; }
         }
     </style>
@@ -146,41 +144,35 @@
 
     <div class="header">
         <h1>Code-Werft</h1>
-        <p style="color:#8b949e; margin:5px 0 0;">Digitaler Denkmalschutz & Software-Manufaktur</p>
+        <p>Digitaler Denkmalschutz – Smarte Software für alte Tablets</p>
     </div>
 
-    <div class="main-container">
+    <div class="main-wrapper">
         <div class="sidebar">
-            <h3>Unsere Mission</h3>
-            <p>Wir geben alter Hardware ein zweites Leben. In einer Zeit von Elektroschrott entwickeln wir Ressourcen-schonende Software für Legacy-Geräte.</p>
+            <h3>Philosophie</h3>
+            <p>Die Code-Werft entwickelt ressourcenschonende Anwendungen, um Legacy-Hardware vor dem Elektroschrott zu bewahren.</p>
             <p style="color:#58a6ff; font-weight:bold;">
-                ✓ Kostenlos & Werbefrei<br>
-                ✓ Kein Datentracking<br>
-                ✓ Optimiert ab Android 4.4
+                ✓ 100% Kostenlos<br>
+                ✓ Ohne Fremdwerbung<br>
+                ✓ Voller KitKat-Support
             </p>
         </div>
 
         <div class="content">
             <div class="card">
-                <h2 class="product-title">Aura Weather <span class="badge">v3.5</span></h2>
-                <p>Das Flaggschiff der Code-Werft. Eine hochpräzise Wetter-Monitoring Lösung für den stationären Einsatz auf Tablets. Verwandelt Altgeräte in professionelle Informations-Displays.</p>
+                <h2>Aura Weather <span class="badge">v3.5</span></h2>
+                <p>Das Flaggschiff der Code-Werft. Eine hochpräzise Wetter-Monitoring Lösung, die speziell für den stationären Einsatz auf älteren Tablets entwickelt wurde. Verwandelt Ihr Altgerät in eine professionelle Wetterstation.</p>
                 
-                <button class="btn-action" id="startBtn" onclick="initAura()">AURA SYSTEM STARTEN</button>
-
-                <div id="weather-result">
-                    <div class="temp-row"><span>Heimathafen</span><span id="bs-val" style="color:#ffcc00; font-weight:bold;">--°C</span></div>
-                    <div class="temp-row"><span>Fernstation</span><span id="kairo-val" style="color:#ffcc00; font-weight:bold;">--°C</span></div>
-                    <p id="sync-status" style="font-size:11px; color:#58a6ff; margin-top:10px;">Datenabgleich aktiv...</p>
-                </div>
-
-                <div style="background:rgba(88,166,255,0.05); padding:15px; border-radius:6px; font-size:13px; margin-top:20px;">
-                    <strong>Installation:</strong> Im Browser-Menü auf "Zum Startbildschirm hinzufügen" tippen, um Aura als Vollbild-App zu nutzen.
-                </div>
+                <button class="btn-launch" onclick="launchApp()">AURA WEATHER STARTEN</button>
+                
+                <p style="font-size: 13px; color: #58a6ff; margin-top: 20px; border-top: 1px dashed #30363d; padding-top: 15px;">
+                    <strong>Installation:</strong> Nutzen Sie die Funktion "Zum Startbildschirm hinzufügen" Ihres Browsers, um Aura als eigenständige App zu verwenden.
+                </p>
             </div>
 
-            <div class="card" style="opacity:0.5; border-style:dashed;">
-                <h2 class="product-title">Nächstes Modul...</h2>
-                <p>Die Konstruktion weiterer Werkzeuge läuft. Alle zukünftigen Produkte folgen unserer Philosophie der Nachhaltigkeit.</p>
+            <div class="card" style="opacity: 0.5; border-style: dashed;">
+                <h2>Demnächst...</h2>
+                <p>Weitere kostenlose Tools für den digitalen Denkmalschutz befinden sich in der Entwicklung.</p>
             </div>
         </div>
     </div>
@@ -194,61 +186,65 @@
         <p>&copy; 2026 Code-Werft Braunschweig | code-werft.de</p>
     </div>
 
-    <div id="contact" class="modal"><div class="modal-box">
-        <span class="close" onclick="closeModal('contact')">&times;</span>
-        <h2>Kontakt</h2>
-        <p>Direktleitung zur Werft:</p>
+    <div id="app-overlay">
+        <div class="app-window">
+            <div style="font-size: 24px; color: #58a6ff; margin-bottom: 30px; letter-spacing: 2px;">AURA WEATHER SYSTEM</div>
+            
+            <div class="app-data-box">
+                <div class="location-label">Heimathafen</div>
+                <div id="bs-temp" class="weather-val">--°C</div>
+                
+                <div style="height: 1px; background: #30363d; margin: 20px 0;"></div>
+                
+                <div class="location-label">Fernstation</div>
+                <div id="kairo-temp" class="weather-val">--°C</div>
+                
+                <div id="sync-time" style="font-size: 11px; color: #58a6ff; margin-top: 20px;">Synchronisiere...</div>
+            </div>
+
+            <button class="btn-close" onclick="closeApp()">× SYSTEM BEENDEN</button>
+        </div>
+    </div>
+
+    <div id="contact" class="modal"><div class="modal-box"><span class="close-modal" onclick="closeModal('contact')">&times;</span>
+        <h2>Kontakt</h2><p>Fragen oder Anregungen? Schreiben Sie uns:</p>
         <p>E-Mail: <a href="mailto:rkpk@online.de" style="color:#58a6ff;">rkpk@online.de</a></p>
     </div></div>
 
-    <div id="legal" class="modal"><div class="modal-box">
-        <span class="close" onclick="closeModal('legal')">&times;</span>
-        <h2>Impressum</h2>
-        <p><strong>Code-Werft Braunschweig</strong><br>Lohengrinstraße 25<br>38106 Braunschweig</p>
-        <p>E-Mail: rkpk@online.de</p>
+    <div id="legal" class="modal"><div class="modal-box"><span class="close-modal" onclick="closeModal('legal')">&times;</span>
+        <h2>Impressum</h2><p><strong>Code-Werft Braunschweig</strong><br>Lohengrinstraße 25<br>38106 Braunschweig</p><p>E-Mail: rkpk@online.de</p>
     </div></div>
 
-    <div id="privacy" class="modal"><div class="modal-box">
-        <span class="close" onclick="closeModal('privacy')">&times;</span>
-        <h2>Datenschutz</h2>
-        <p>Nachhaltigkeit bedeutet auch Datensparsamkeit. Unsere Homepage und Apps erheben keine personenbezogenen Daten, nutzen keine Cookies und verzichten auf Analysetools.</p>
+    <div id="privacy" class="modal"><div class="modal-box"><span class="close-modal" onclick="closeModal('privacy')">&times;</span>
+        <h2>Datenschutz</h2><p>Die Code-Werft verzichtet vollständig auf die Erhebung personenbezogener Daten, Cookies oder Analysetools. Privatsphäre ist Teil unseres Denkmalschutz-Konzepts.</p>
     </div></div>
 
     <script>
-        // NAVIGATION & POPUPS
         function openModal(id) { document.getElementById(id).style.display = 'block'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        window.onclick = function(e) { if(e.target.className === 'modal') { e.target.style.display = 'none'; } }
-
-        // AURA START LOGIK
-        async function initAura() {
-            const btn = document.getElementById('startBtn');
-            const res = document.getElementById('weather-result');
-            btn.innerText = "INITIALISIERE...";
+        
+        async function launchApp() {
+            const overlay = document.getElementById('app-overlay');
+            overlay.style.display = 'block';
             
             try {
-                // Daten laden
-                const rBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
-                const dBS = await rBS.json();
-                document.getElementById('bs-val').innerText = Math.round(dBS.current_weather.temperature) + '°C';
+                const resBS = await fetch('https://api.open-meteo.com/v1/forecast?latitude=52.2689&longitude=10.5268&current_weather=true');
+                const dataBS = await resBS.json();
+                document.getElementById('bs-temp').innerText = Math.round(dataBS.current_weather.temperature) + '°C';
 
-                const rK = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
-                const dK = await rK.json();
-                document.getElementById('kairo-val').innerText = Math.round(dK.current_weather.temperature) + '°C';
+                const resKairo = await fetch('https://api.open-meteo.com/v1/forecast?latitude=30.0626&longitude=31.2497&current_weather=true');
+                const dataKairo = await resKairo.json();
+                document.getElementById('kairo-temp').innerText = Math.round(dataKairo.current_weather.temperature) + '°C';
 
-                const now = new Date();
-                document.getElementById('sync-status').innerText = 'System aktiv - Letzter Sync: ' + now.toLocaleTimeString('de-DE');
-                
-                // Anzeige umschalten
-                res.style.display = 'block';
-                btn.innerText = "SYSTEM AKTIV";
-                btn.style.backgroundColor = "#1f6feb";
+                document.getElementById('sync-time').innerText = 'STATUS: ONLINE - LETZTER SYNC: ' + new Date().toLocaleTimeString('de-DE');
             } catch (e) {
-                btn.innerText = "SYNC FEHLER";
-                alert("Verbindung zum Satelliten unterbrochen.");
+                document.getElementById('sync-status').innerText = 'FEHLER: KEINE VERBINDUNG';
             }
         }
+
+        function closeApp() { document.getElementById('app-overlay').style.display = 'none'; }
+        
+        window.onclick = function(event) { if (event.target.className === 'modal') { event.target.style.display = 'none'; } }
     </script>
 </body>
 </html>
- 
