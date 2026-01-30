@@ -2,78 +2,104 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Aura V23.1 Klassik</title>
-    <link rel="stylesheet" href="style.css?v=23.1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Werft | Aura Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <audio id="wake-aud" loop playsinline></audio>
-    <video id="sleep-vid" loop playsinline muted></video>
 
-    <div id="start-overlay" onclick="startApp()">
-        <img src="logo.png" style="width:130px; margin-bottom:20px;">
-        <div style="border: 3px solid #00eaff; color: #00eaff; padding: 15px 40px; font-size: 24px; font-weight: bold; border-radius: 10px; cursor: pointer; background: #000;">STATION STARTEN</div>
-        <p style="color:#444; margin-top:15px;">Version 23.1 Stable</p>
-    </div>
-
-    <div class="dashboard">
-        <div class="col-left">
-            <div id="city-name">LADE...</div>
-            <div id="clock">00:00</div>
-            <div id="date">...</div>
+    <main class="dashboard">
+        
+        <section class="col-left">
             <div class="logo-container">
-                <img src="logo.png" class="logo-fallback">
-                <video id="logo-heartbeat" loop playsinline muted><source src="logo.mp4" type="video/mp4"></video>
+                <video id="logo-video" src="logo.mp4" loop muted playsinline></video>
+                <div class="logo-overlay"></div>
+            </div>
+            <div class="clock-widget">
+                <h2 id="time">--:--</h2>
+                <p id="date">Lade Datum...</p>
+            </div>
+        </section>
+
+        <section class="col-center">
+            
+            <div class="launch-message">
+                <h1>Seite wird zum<br><span class="highlight-date">02.02.2026</span><br>komplett erreichbar sein!</h1>
+                <p class="sub-message"><i class="fas fa-bookmark"></i> Bitte bookmarks setzen, es lohnt!</p>
+            </div>
+
+            <div class="weather-main">
+                <div class="temp-display" id="current-temp">--°C</div>
+                <div class="weather-icon-large" id="weather-icon"></div>
+                <div class="weather-desc" id="weather-desc">Lade Wetter...</div>
+            </div>
+            
+            <div class="precip-container">
+                <i class="fas fa-umbrella precip-icon"></i>
+                <span id="precip-prob">0%</span>
+            </div>
+        </section>
+
+        <section class="col-right">
+            <div class="astro-widget">
+                <div class="sun-times">
+                    <p><i class="fas fa-sunrise"></i> <span id="sunrise">--:--</span></p>
+                    <p><i class="fas fa-sunset"></i> <span id="sunset">--:--</span></p>
+                </div>
+                <div class="moon-phase">
+                    <i class="fas fa-moon"></i> <span id="moon">Mond</span>
+                </div>
+            </div>
+            <div class="settings-btn" id="open-settings">
+                <i class="fas fa-cog fa-spin-hover"></i>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="news-ticker">
+        <div class="ticker-wrap">
+            <div class="ticker-move" id="ticker-content">
+                +++ Willkommen auf der Code-Werft +++ Aura System initialisiert +++ Wetterdaten werden geladen +++
             </div>
         </div>
+    </footer>
 
-        <div class="col-center">
-            <img id="w-icon" src="">
-            <div id="temp">--°</div>
-            <div id="w-desc">WETTERDATEN...</div>
-        </div>
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-settings">&times;</span>
+            <h2>Einstellungen</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">Sleep Mode <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body">
+                        <p>Display dimmen:</p>
+                        <div class="input-group">
+                            <label for="sleep-from">Von:</label>
+                            <input type="time" id="sleep-from" value="22:00">
+                        </div>
+                        <div class="input-group">
+                            <label for="sleep-to">Bis:</label>
+                            <input type="time" id="sleep-to" value="06:00">
+                        </div>
+                        <button class="back-btn"><i class="fas fa-arrow-left"></i> Zurück</button>
+                    </div>
+                </div>
 
-        <div class="col-right">
-            <button id="btn-setup" onclick="openMenu()">EINSTELLUNGEN</button>
-            <div class="astro-box">
-                <div>SONNE ☀ <span id="sunrise">--:--</span></div>
-                <div>UNTER ☾ <span id="sunset">--:--</span></div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Standort <i class="fas fa-chevron-down"></i></button>
+                    <div class="accordion-body">
+                        <input type="text" id="location-input" placeholder="Stadt eingeben...">
+                        <button id="save-location">Speichern</button>
+                        <button class="back-btn"><i class="fas fa-arrow-left"></i> Zurück</button>
+                    </div>
+                </div>
             </div>
-            <div style="margin-top:20px; font-size:12px; color:#555;">
-                webmaster@code-werft.de
-            </div>
         </div>
     </div>
 
-    <div class="ticker-area">
-        <div id="ticker-text">Verbindung zum Wetter-Server wird aufgebaut...</div>
-    </div>
-
-    <div class="forecast-area">
-        <div class="f-row" id="hourly-row"></div>
-        <div class="f-row" id="daily-row"></div>
-    </div>
-
-    <div id="settings-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.98); z-index:20000; padding:30px; box-sizing:border-box; text-align:center; color:#fff;">
-        <h1 style="color:#00eaff;">KONFIGURATION</h1>
-        
-        <p>STANDORT ÄNDERN:</p>
-        <input type="text" id="city-in" style="width:80%; padding:15px; font-size:20px; background:#111; color:#fff; border:1px solid #00eaff; border-radius:10px;" placeholder="z.B. Braunschweig">
-        
-        <div style="margin-top:40px; border:1px solid #ffcc00; padding:20px; border-radius:10px; color:#ffcc00; cursor:pointer;" onclick="window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=piratkarl@web.de&currency_code=EUR')">
-            ☕ UNTERSTÜTZE DAS PROJEKT: KAFFEE SPENDEN
-        </div>
-
-        <div style="margin-top:40px; color:#aaa; font-size:14px;">
-            <p><strong>IMPRESSUM</strong></p>
-            <p>Pirat Karl<br>38106 Braunschweig</p>
-            <p>webmaster@code-werft.de</p>
-        </div>
-
-        <button onclick="save()" style="width:100%; padding:20px; background:#00eaff; color:#000; font-weight:bold; margin-top:30px; border-radius:10px; border:none; font-size:18px;">SPEICHERN & NEU LADEN</button>
-        <button onclick="closeMenu()" style="width:100%; padding:15px; background:#333; color:#fff; margin-top:15px; border-radius:10px; border:none;">ABBRECHEN</button>
-    </div>
-
-    <script src="script.js?v=23.1"></script>
+    <script src="script.js"></script>
 </body>
-</html>
+    </html>
