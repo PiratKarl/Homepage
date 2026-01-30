@@ -3,73 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft | Digital Shipyard</title>
+    <title>CODE-WERFT | Digital Shipyard</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="main-container">
+    <div class="grid-bg"></div>
+
+    <div class="wrapper">
         
-        <header class="werft-header">
-            <div class="logo-wrapper">
-                <video src="logo.mp4" autoplay loop muted playsinline class="brand-logo"></video>
-            </div>
-            <div class="header-text">
-                <h1>CODE-WERFT</h1>
-                <p class="slogan">Digital Solutions aus Braunschweig</p>
+        <header>
+            <div class="brand">
+                <div class="logo-container">
+                    <video src="logo.mp4" autoplay loop muted playsinline></video>
+                </div>
+                <div class="brand-text">
+                    <h1>CODE-WERFT</h1>
+                    <span class="subtitle">ENGINEERING TOMORROW</span>
+                </div>
             </div>
         </header>
 
-        <hr class="divider">
-
-        <main class="projects-area">
-            
-            <div class="project-card featured">
-                <div class="card-status">Next Launch</div>
-                <div class="icon-box">
-                    <i class="fas fa-cloud-sun-rain"></i>
-                </div>
-                <h2>Aura Weather Station</h2>
-                <p class="desc">Das intelligente Wetter-Dashboard für dein Zuhause.</p>
+        <main>
+            <section class="hero-project">
+                <div class="label-badge">UPCOMING RELEASE</div>
                 
-                <div class="launch-info">
-                    <p>Verfügbar ab:</p>
-                    <span class="date">02.02.2026</span>
-                </div>
-                <div class="cta-box">
-                    <i class="fas fa-bookmark"></i> Bookmark me!
-                </div>
-            </div>
-
-            <div class="pipeline-grid">
-                <div class="project-card locked">
-                    <div class="card-status future">In Planung</div>
-                    <div class="icon-box">
-                        <i class="fas fa-motorcycle"></i>
+                <div class="glass-card aura-card">
+                    <div class="card-content">
+                        <div class="project-info">
+                            <h2>AURA</h2>
+                            <h3>Smart Weather Station</h3>
+                            <p>Das intelligente Dashboard für dein Zuhause. Präzise Wetterdaten, Astronomie und minimalistisches Design.</p>
+                            
+                            <div class="launch-countdown">
+                                <i class="fas fa-rocket"></i> Launch: <span class="cyan-text">02.02.2026</span>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <i class="fas fa-cloud-bolt icon-large"></i>
+                        </div>
                     </div>
-                    <h2>Moto-Log</h2>
-                    <p class="desc">Touren-Tracking & Wartung.</p>
-                    <div class="lock-overlay"><i class="fas fa-lock"></i></div>
                 </div>
+            </section>
 
-                <div class="project-card locked">
-                    <div class="card-status future">Konzept</div>
-                    <div class="icon-box">
-                        <i class="fas fa-home"></i>
+            <section class="pipeline">
+                <h4 class="section-title">IN DER WERFT (PIPELINE)</h4>
+                
+                <div class="grid-container">
+                    <div class="glass-card locked">
+                        <div class="status-dot orange"></div>
+                        <i class="fas fa-motorcycle card-icon"></i>
+                        <h4>MOTO-LOG</h4>
+                        <p>Maintenance & Tours</p>
                     </div>
-                    <h2>Smart Hub</h2>
-                    <p class="desc">Zentrale Haussteuerung.</p>
-                    <div class="lock-overlay"><i class="fas fa-lock"></i></div>
-                </div>
-            </div>
 
+                    <div class="glass-card locked">
+                        <div class="status-dot red"></div>
+                        <i class="fas fa-network-wired card-icon"></i>
+                        <h4>SMART HUB</h4>
+                        <p>Central Control Unit</p>
+                    </div>
+
+                    <div class="glass-card locked">
+                        <div class="status-dot red"></div>
+                        <i class="fas fa-code-branch card-icon"></i>
+                        <h4>SYSTEM X</h4>
+                        <p>Classified</p>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
-            <p>&copy; 2026 Code-Werft. <br>Entwicklung & Design: <span style="color:var(--accent-color);">Du & Gemini</span></p>
+            <p>EST. 2025 &bull; BRAUNSCHWEIG &bull; GERMANY</p>
         </footer>
     </div>
 
 </body>
-</html>
+</html> 
