@@ -1,12 +1,12 @@
 :root {
     /* Aura/Werft Farbpalette */
-    --bg-color: #050505; /* Sehr dunkler Hintergrund */
+    --bg-color: #000000; /* Reines Schwarz */
     --card-bg: rgba(20, 20, 20, 0.6);
     --accent-cyan: #00eaff;
     --accent-dim: rgba(0, 234, 255, 0.1);
     --text-main: #ffffff;
     --text-muted: #888888;
-    --border-color: rgba(255, 255, 255, 0.1);
+    --border-color: rgba(255, 255, 255, 0.15);
 }
 
 * {
@@ -23,8 +23,7 @@ body {
     overflow-x: hidden;
     display: flex;
     justify-content: center;
-    /* Optional: Ein ganz subtiler vertikaler Verlauf für mehr Tiefe */
-    background-image: linear-gradient(to bottom, #000000, #0a0a0a);
+    background-image: none;
 }
 
 /* --- Hintergrund Effekt (Blueprint Raster) --- */
@@ -35,7 +34,7 @@ body {
         linear-gradient(var(--border-color) 1px, transparent 1px),
         linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
     background-size: 50px 50px;
-    opacity: 0.1; /* Etwas subtiler gemacht */
+    opacity: 0.08; /* Sehr subtil */
     z-index: -1;
     pointer-events: none;
 }
@@ -47,18 +46,21 @@ body {
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    /* gap reduziert, da Pipeline fehlt */
-    gap: 40px; 
-    /* Sorgt dafür, dass der Footer unten bleibt, wenn wenig Inhalt da ist */
+    /* Zentriert den Inhalt vertikal, wenn wenig Text da ist */
     min-height: 90vh; 
-    justify-content: space-between;
+    justify-content: center; 
+    gap: 60px;
 }
 
 /* --- Header --- */
+header {
+    width: 100%;
+}
+
 .brand {
     display: flex;
     align-items: center;
-    justify-content: center; /* Zentriert! */
+    justify-content: center; /* Alles zentriert */
     gap: 30px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 30px;
@@ -72,14 +74,13 @@ body {
     overflow: hidden;
     border: 2px solid var(--accent-cyan);
     box-shadow: 0 0 20px var(--accent-dim);
-    /* NEU: Damit der Anker mittig sitzt */
+    /* Zentriert den Anker im Kreis */
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgba(0, 234, 255, 0.05);
 }
 
-/* NEU: Stil für den Anker-Platzhalter */
 .brand-anchor {
     font-size: 2.5rem;
     color: var(--accent-cyan);
@@ -91,6 +92,7 @@ body {
     font-size: 2.5rem;
     letter-spacing: 2px;
     font-weight: 700;
+    margin-bottom: 5px;
 }
 
 .subtitle {
@@ -113,8 +115,7 @@ body {
 /* --- Hero Section (Aura) --- */
 .hero-project {
     position: relative;
-    /* Zentriert die Karte vertikal im verfügbaren Platz */
-    margin: auto 0;
+    width: 100%;
 }
 
 .label-badge {
@@ -191,11 +192,12 @@ body {
 /* --- Footer --- */
 footer {
     text-align: center;
-    color: #444; /* Etwas dunkler für den Dark Mode */
+    color: #444;
     font-size: 0.7rem;
     letter-spacing: 2px;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
+    margin-top: auto; /* Drückt Footer nach unten */
 }
 
 /* --- Animations --- */
@@ -213,4 +215,4 @@ footer {
     }
     .project-info p { margin: 0 auto 20px auto; }
     .brand { flex-direction: column; text-align: center; gap: 15px; }
-}
+} 
