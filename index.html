@@ -16,7 +16,8 @@
     .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
     header.site{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
     .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--text);letter-spacing:0.2px}
-    .brand-logo{display:block;height:96px;width:auto;border-radius:8px}
+    /* feste Größe für Firmenlogo */
+    .brand-logo{display:block;height:120px;width:auto;border-radius:8px;object-fit:contain}
     nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
     .hero h1{font-size:28px;margin:0 0 12px}
@@ -39,12 +40,16 @@
     .contact-form{display:grid;gap:10px;max-width:640px}
     input,textarea,select{padding:10px;border-radius:8px;border:1px solid #e6eef6;font-size:15px}
     footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid #e9f2fb;margin-top:28px}
-    .auralogo{width:260px;max-width:60%;height:auto;display:block;margin:0 auto 12px}
+    /* Aura-Logo deutlich größer */
+    .auralogo{width:320px;max-width:70%;height:auto;display:block;margin:0 auto 12px;object-fit:contain}
+    /* Tablet-Bild feste Größe und Position (Schreibtisch-Motiv) */
+    .hero-image img{width:420px;height:300px;object-fit:cover;border-radius:8px;display:block}
     @media (max-width:880px){
       .hero{grid-template-columns:1fr; text-align:center}
       .hero-image{order:-1}
-      .brand-logo{height:64px}
-      .auralogo{width:200px}
+      .brand-logo{height:80px}
+      .auralogo{width:220px}
+      .hero-image img{width:100%;height:auto}
     }
   </style>
 </head>
@@ -52,8 +57,8 @@
   <div class="wrap">
     <header class="site" role="banner">
       <div class="brand">
-        <!-- Firmenlogo vor dem Namen (Datei im selben Ordner) -->
-        <img src="code-werftgross.png" alt="Code‑Werft Logo" class="brand-logo" />
+        <!-- Firmenlogo mit fester Größe (Datei im selben Ordner) -->
+        <img src="code-werftgross.png.png" alt="Code‑Werft Logo" class="brand-logo" />
         <div>
           <div style="font-size:18px">Code‑Werft</div>
           <div style="font-size:12px;color:var(--muted);margin-top:2px">Alte Tablets neu nutzen</div>
@@ -81,7 +86,8 @@
         </ul>
       </div>
       <div class="card hero-image" aria-hidden="false">
-        <img src="hero-aura-tablet.webp" alt="Tablet mit Aura Weather Station" style="width:100%;border-radius:8px;display:block" />
+        <!-- Schreibtisch-Motiv: auraschreibt.jpg (Datei im selben Ordner) -->
+        <img src="auraschreibt.jpg" alt="Tablet auf Schreibtisch mit Aura Weather Station" />
       </div>
     </section>
 
@@ -137,7 +143,7 @@
     <main id="aura" class="app-page" aria-labelledby="aura-main-title">
       <div class="card">
         <header class="app-header" style="text-align:center">
-          <!-- Aura Logo über der Überschrift (Datei im selben Ordner) -->
+          <!-- Aura Logo deutlich größer (Datei im selben Ordner) -->
           <img src="auralogo.png" alt="Aura Logo" class="auralogo" />
           <h1 id="aura-main-title">Aura Weather Station</h1>
           <p class="lead">Verwandelt alte Tablets in zuverlässige Wetterstationen — optimiert für ältere Hardware.</p>
@@ -184,7 +190,7 @@
           <p>Individuelle Anpassungen wie Branding, andere Metropolen oder zusätzliche Sensoranbindung sind auf Anfrage möglich.</p>
         </section>
 
-        <!-- Neue Schaltfläche: Web App starten -->
+        <!-- Schaltfläche: Web App starten -->
         <section style="margin-top:18px;text-align:center">
           <a class="btn btn-primary" href="https://aura.code-werft.de" target="_blank" rel="noopener">Web App starten</a>
         </section>
@@ -300,4 +306,4 @@
     });
   </script>
 </body>
-        </html>
+  </html>
