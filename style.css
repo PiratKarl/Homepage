@@ -1,163 +1,358 @@
-/* CODE-WERFT CUSTOM CSS V1.2.1 
-   Design: Dock Control & Intro
-   Compatibility: Android Legacy / Vanilla CSS
-*/
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-    background-color: #000000;
-    color: #ffffff;
-    font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+/* CODE-WERFT GLOBAL STYLES */
+:root {
+    --bg-color: #0a0e14;
+    --text-color: #e0e6ed;
+    --accent-color: #00e0ff; /* Cyan */
+    --live-color: #00ff41;    /* Hacker Green */
+    --warn-color: #ff9d00;    /* Baustelle Orange */
+    --info-color: #aaddff;    /* Planung Blau */
+    --panel-bg: rgba(20, 30, 40, 0.6);
+    --border-color: #334455;
 }
 
-/* --- HEADER --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Courier New', Courier, monospace; /* Tech-Look */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* HEADER & NAV */
 header {
-    width: 100%;
-    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(0, 234, 255, 0.3);
+    flex-wrap: wrap;
 }
 
-.header-left { display: flex; align-items: center; gap: 15px; }
-.header-logo { height: 40px; width: auto; filter: drop-shadow(0 0 5px rgba(0, 234, 255, 0.4)); }
-.brand h1 { color: #00eaff; letter-spacing: 4px; font-size: 1.5rem; text-transform: uppercase; line-height: 1; }
-.brand p { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; margin-top: 4px; }
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 
-/* --- NAVIGATION --- */
-.top-nav { display: flex; gap: 25px; }
-.top-nav a { color: #ffffff; text-decoration: none; font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; padding-bottom: 5px; cursor: pointer; transition: 0.3s; }
-.top-nav a.active { color: #00eaff; border-bottom: 2px solid #00eaff; }
+.header-logo {
+    height: 50px;
+    width: auto;
+}
 
-/* --- MAIN LAYOUT --- */
+.brand h1 {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.brand p {
+    font-size: 0.7rem;
+    color: #8899aa;
+    margin: 0;
+}
+
+.top-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.top-nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* MAIN CONTENT */
 main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
     width: 100%;
-    padding: 40px 20px;
 }
 
-h2 { color: #00eaff; font-weight: 300; font-size: 2rem; margin-bottom: 40px; }
+.content-panel {
+    animation: fadeIn 0.5s ease-in-out;
+}
 
-/* --- NEU: WELCOME PANEL (INTRO) --- */
-.welcome-panel {
-    max-width: 800px;
-    margin: 0 auto 50px auto;
+/* 1. MANUFAKTUR (STARTSEITE) */
+.hero-text {
     text-align: center;
-    padding-bottom: 30px;
-    border-bottom: 1px solid rgba(0, 234, 255, 0.15);
+    margin-bottom: 3rem;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
-.welcome-panel h2 {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-transform: none;
+.hero-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.highlight {
+    color: var(--accent-color);
+}
+
+.badges {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    border: 1px solid var(--accent-color);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+}
+
+.intro-footer {
+    text-align: center;
+    color: #8899aa;
+    margin-top: 2rem;
+}
+
+/* 2. PROJEKTE PANEL */
+.project-block {
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    color: #8899aa;
+    border-bottom: 1px solid #334455;
+    padding-bottom: 0.5rem;
+    margin: 3rem 0 1.5rem 0;
+    text-transform: uppercase;
+    font-size: 0.9rem;
     letter-spacing: 1px;
-    border: none; /* Kein Standard-Margin hier */
 }
 
-.welcome-panel p {
-    color: #aaaaaa;
+/* AURA SPECIAL CARD & BESCHREIBUNG */
+.aura-status {
+    position: relative;
+    width: 100%;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(0, 224, 255, 0.2);
+    overflow: hidden;
+    border-radius: 8px;
+    /* Damit das Bild hoch genug ist für den Text: */
+    min-height: 400px; 
+    background: #000;
+}
+
+.aura-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.3; /* Etwas dunkler für bessere Lesbarkeit */
+    transition: opacity 0.5s;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+.aura-status:hover .aura-img {
+    opacity: 0.15;
+}
+
+.overlay-text {
+    position: relative; /* Wichtig damit es über dem Bild liegt */
+    z-index: 2;
+    padding: 3rem 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.overlay-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 224, 255, 0.5);
+}
+
+/* Die freundliche Beschreibung */
+.project-desc {
     font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 25px;
+    color: #e0e6ed;
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
-.welcome-panel strong { color: #00eaff; font-weight: normal; }
-
-.skills-tag-container {
+/* Die 100% Badges */
+.usp-container {
     display: flex;
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 2.5rem;
 }
 
-.skill-tag {
-    font-size: 0.75rem;
-    color: #00eaff;
-    border: 1px solid rgba(0, 234, 255, 0.3);
+.usp-badge {
+    border: 1px solid var(--live-color);
+    color: var(--live-color);
     padding: 5px 12px;
-    border-radius: 20px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    background: rgba(0, 234, 255, 0.05);
+    background: rgba(0, 255, 65, 0.1);
 }
 
-/* --- DOCK GRID (PROJEKT ÜBERSICHT) --- */
-.dock-grid {
+.launch-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: var(--accent-color);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+.launch-btn:hover {
+    background: #fff;
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+.status-live {
+    margin-top: 20px;
+    color: var(--live-color);
+    font-weight: bold;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* ANDERE PROJEKTE */
+.projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    width: 100%;
-    max-width: 900px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-.dock-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #333;
+.project-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
     border-radius: 8px;
-    padding: 20px;
-    text-align: left;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+/* Status Farben */
+.status-indicator.warning { color: var(--warn-color); }
+.status-indicator.info { color: var(--info-color); }
+
+/* 3. KONTAKT FORMULAR */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(10, 15, 20, 0.8);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #050a10;
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0, 224, 255, 0.2);
+}
+
+.action-btn {
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    text-transform: uppercase;
+    width: 100%;
+    font-family: inherit;
+    transition: background 0.3s;
 }
 
-.dock-card:hover {
-    border-color: #00eaff;
-    background: rgba(0, 234, 255, 0.05);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+.action-btn:hover {
+    background: #fff;
 }
 
-.dock-card h3 { color: #fff; margin: 10px 0 5px 0; font-size: 1.2rem; }
-.dock-card p { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; }
-.card-meta { font-size: 0.75rem; color: #555; font-family: monospace; border-top: 1px solid #333; padding-top: 10px; }
+/* UTILS & FOOTER */
+.hidden { display: none; }
 
-/* Status Indikatoren */
-.card-status { font-size: 0.7rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; }
-.status-live { color: #00eaff; text-shadow: 0 0 5px #00eaff; }
-.status-build { color: #ffae00; }
-.status-wait { color: #666; }
-
-/* --- AURA PRO CONTAINER (DETAIL VIEW) --- */
-.project-container {
-    border: 2px solid #00eaff; border-radius: 12px; padding: 40px 30px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
-    box-shadow: 0 0 25px rgba(0, 234, 255, 0.15); max-width: 600px; width: 95%; margin: 0 auto;
+.description-footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    color: #445566;
+    border-top: 1px dashed #333;
+    padding-top: 1rem;
 }
 
-.project-title-block { display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; }
-
-.project-hero-img {
-    width: 100%; max-width: 300px; height: auto; border-radius: 8px;
-    border: 1px solid rgba(0, 234, 255, 0.5); box-shadow: 0 0 15px rgba(0, 234, 255, 0.2);
-    margin: 0 auto 10px auto; display: block;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.caption-text { font-size: 0.7rem; color: #ffffff; opacity: 0.5; margin-bottom: 20px; letter-spacing: 1px; font-style: italic; text-align: center; }
-
-.project-title { font-size: 2rem; font-weight: bold; color: #ffffff; letter-spacing: 2px; }
-
-/* Buttons & Footer */
-.btn-start {
-    color: #00eaff; text-decoration: none; font-weight: bold; font-size: 1.3rem;
-    display: inline-block; margin-top: 15px; padding: 10px 20px; transition: transform 0.2s ease;
+/* MOBILE */
+@media (max-width: 600px) {
+    .header-logo { height: 40px; }
+    .top-nav a { font-size: 0.7rem; padding: 5px; }
+    .hero-text h2 { font-size: 1.8rem; }
 }
-.btn-start:active { transform: scale(0.95); }
-
-.status-text { font-size: 0.85rem; color: #666; margin-top: 25px; }
-.description-footer { margin-top: 50px; font-size: 0.8rem; line-height: 1.5; opacity: 0.4; max-width: 400px; }

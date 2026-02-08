@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft | Dock Control</title>
+    <title>Code-Werft | Projekte</title>
     <link rel="icon" type="image/png" href="code-werftgross.png">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -17,78 +17,106 @@
                 <p>Webapp Entwicklung</p>
             </div>
         </div>
+        
         <nav class="top-nav">
-            <a href="#" id="nav-werft" class="active">WERFT</a>
-            <a href="#" id="nav-aura">AURA</a>
+            <a href="#" id="navHome" class="active">Manufaktur</a>
+            <a href="#" id="navProjects">Unsere Projekte</a>
+            <a href="#" id="navContact">Kontakt</a>
         </nav>
     </header>
 
     <main>
-        
-        <section id="section-werft" class="content-section active">
-            
-            <div class="welcome-panel">
-                <h2>Digitale Maßarbeit aus der Werft.</h2>
+        <section id="home-panel" class="content-panel">
+            <div class="hero-text">
+                <h2>Maßarbeit aus dem Dock.</h2>
                 <p>
-                    Willkommen an Deck. Wir entwickeln hochperformante Web-Applikationen 
-                    und smarte IoT-Schnittstellen für das vernetzte Zuhause. <br>
-                    <strong>Präzises Handwerk – von der Kiellegung bis zum Stapellauf.</strong>
+                    Wir entwickeln hochperformante Web-Apps und <br>
+                    Schnittstellen für das vernetzte Zuhause. <br>
+                    <span class="highlight">Echtes Handwerk – von der Kiellegung bis zum Stapellauf.</span>
                 </p>
-                <div class="skills-tag-container">
-                    <span class="skill-tag">WEB-APPS</span>
-                    <span class="skill-tag">UI / UX DESIGN</span>
-                    <span class="skill-tag">SMART HOME</span>
+                
+                <div class="badges">
+                    <span class="badge">WEB-APPS</span>
+                    <span class="badge">UI / UX DESIGN</span>
+                    <span class="badge">SMART HOME</span>
                 </div>
             </div>
-
-            <div class="dock-grid">
-                
-                <div class="dock-card active-project" onclick="switchTab('aura')">
-                    <div class="card-status status-live">● SYSTEM LIVE</div>
-                    <h3>Aura Wetterstation</h3>
-                    <p>Version V83.1 Pro</p>
-                    <div class="card-meta">Standort: Wohnzimmer</div>
-                </div>
-
-                <div class="dock-card construction-project">
-                    <div class="card-status status-build">● IM BAU</div>
-                    <h3>Smart Kombüse</h3>
-                    <p>Küchen-Management</p>
-                    <div class="card-meta">Rollout: Q3 2026</div>
-                </div>
-
-                <div class="dock-card maintenance-project">
-                    <div class="card-status status-wait">● WARTUNG</div>
-                    <h3>Werft Core</h3>
-                    <p>Server & Infrastruktur</p>
-                    <div class="card-meta">Uptime: 99.9%</div>
-                </div>
-
+            
+            <div class="intro-footer">
+                <p>Wählen Sie oben <strong>"Unsere Projekte"</strong> für die App-Übersicht.</p>
             </div>
         </section>
 
+        <section id="projects-panel" class="content-panel hidden">
+            
+            <div class="project-block">
+                <div class="aura-status">
+                    <img src="auraschreibt.jpg" alt="Aura Status" class="aura-img">
+                    <div class="overlay-text">
+                        <h3>Aura Wetterstation Pro</h3>
+                        
+                        <p class="project-desc">
+                            Lokale Wetterdaten, Vorhersagen und Astro-Infos auf einen Blick –<br>
+                            klar, ruhig und fokussiert.
+                        </p>
 
-        <section id="section-aura" class="content-section" style="display: none;">
-            <h2>Projekt: Aura Wetterstation</h2>
+                        <div class="usp-container">
+                            <span class="usp-badge">100% KOSTENLOS</span>
+                            <span class="usp-badge">100% WERBEFREI</span>
+                            <span class="usp-badge">100% DATENSCHUTZ</span>
+                        </div>
 
-            <div class="project-container">
-                <div class="project-title-block">
-                    <img src="wohnzimmerstandart.jpg" alt="Aura Pro Ansicht" class="project-hero-img">
-                    <div class="caption-text">
-                        Anwendungsbeispiel: Wandmontage im Wohnzimmer
-                    </div>
-                    <div class="project-title">
-                        AURA Wetterstation Pro
+                        <a href="https://aura.code-werft.de" target="_blank" class="launch-btn">
+                            ▶ HIER KLICKEN ZUM STARTEN
+                        </a>
+                        <div class="status-live">● LIVE SYSTEM</div>
                     </div>
                 </div>
-                
-                <a href="https://aura.code-werft.de" target="_blank" class="btn-start">
-                    ▶ HIER KLICKEN ZUM STARTEN
-                </a>
+            </div>
 
-                <div class="status-text">
-                    Live-System • Dark Mode • Pro-Edition
+            <h3 class="category-title">Bald verfügbar</h3>
+            <div class="projects-grid">
+                <div class="project-card coming-soon">
+                    <span class="status-indicator warning">● IM BAU (Q3 2026)</span>
+                    <h3>Smarte Kombüse</h3>
+                    <p>Das professionelle Küchen-Management für Hobby-Smutjes.</p>
                 </div>
+            </div>
+
+            <h3 class="category-title">In Planung</h3>
+            <div class="projects-grid">
+                <div class="project-card planning">
+                    <span class="status-indicator info">● KONZEPT-PHASE</span>
+                    <h3>Smarte Einkaufsliste</h3>
+                    <p>Eine Zusatz Web-App zur Smarten Kombüse, aber auch als eigenständige Web-App nutzbar.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="contact-panel" class="content-panel hidden">
+            <div class="contact-container">
+                <h2>Funkspruch senden</h2>
+                <p>Senden Sie Ihre Anfrage direkt ins Dock.</p>
+
+                <form class="contact-form" action="mailto:webmaster@code-werft.de" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label>Name / Rufzeichen</label>
+                        <input type="text" name="Name" placeholder="Ihr Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rückkanal (E-Mail)</label>
+                        <input type="email" name="Email" placeholder="ihre@email.de" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Logbucheintrag</label>
+                        <textarea name="Nachricht" rows="5" placeholder="Wie können wir helfen?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="action-btn">Absenden</button>
+                </form>
             </div>
         </section>
 

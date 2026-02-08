@@ -1,47 +1,55 @@
-// CODE-WERFT CORE CONTROL SCRIPT
-// Version: 1.2.0
-// Funktion: Tab-Switching Logic (Werft <-> Aura)
-
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Elemente referenzieren
-    const navWerft = document.getElementById('nav-werft');
-    const navAura = document.getElementById('nav-aura');
-    
-    const sectionWerft = document.getElementById('section-werft');
-    const sectionAura = document.getElementById('section-aura');
+    // 1. Wir holen uns die Knöpfe (Links)
+    const navHome = document.getElementById('navHome');
+    const navProjects = document.getElementById('navProjects'); // NEU: Projects statt Aura
+    const navContact = document.getElementById('navContact');
 
-    // Funktion zum Umschalten
-    window.switchTab = function(tabName) {
-        if (tabName === 'werft') {
-            // Navigation Aktivierung
-            navWerft.classList.add('active');
-            navAura.classList.remove('active');
-            
-            // Inhalt umschalten
-            sectionWerft.style.display = 'block';
-            sectionAura.style.display = 'none';
-        } 
-        else if (tabName === 'aura') {
-            // Navigation Aktivierung
-            navWerft.classList.remove('active');
-            navAura.classList.add('active');
-            
-            // Inhalt umschalten
-            sectionWerft.style.display = 'none';
-            sectionAura.style.display = 'block';
+    // 2. Wir holen uns die Bereiche (Panels)
+    const homePanel = document.getElementById('home-panel');
+    const projectsPanel = document.getElementById('projects-panel'); // NEU
+    const contactPanel = document.getElementById('contact-panel');
+
+    // 3. Die Funktion zum Umschalten
+    function switchTab(target) {
+        // Zuerst: Alles verstecken (Reset)
+        homePanel.classList.add('hidden');
+        projectsPanel.classList.add('hidden');
+        contactPanel.classList.add('hidden');
+
+        // Alle Knöpfe "dunkel" machen
+        navHome.classList.remove('active');
+        navProjects.classList.remove('active');
+        navContact.classList.remove('active');
+
+        // Jetzt: Nur das Gewünschte einschalten
+        if (target === 'home') {
+            homePanel.classList.remove('hidden');
+            navHome.classList.add('active');
+        } else if (target === 'projects') {
+            projectsPanel.classList.remove('hidden');
+            navProjects.classList.add('active');
+        } else if (target === 'contact') {
+            contactPanel.classList.remove('hidden');
+            navContact.classList.add('active');
         }
-    };
+    }
 
-    // Event Listener für Klicks auf die Navigationsleiste
-    navWerft.addEventListener('click', (e) => {
-        e.preventDefault();
-        switchTab('werft');
+    // 4. Die Klicks überwachen
+    navHome.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        switchTab('home');
     });
 
-    navAura.addEventListener('click', (e) => {
+    navProjects.addEventListener('click', (e) => {
         e.preventDefault();
-        switchTab('aura');
+        switchTab('projects');
     });
 
+    navContact.addEventListener('click', (e) => {
+        e.preventDefault();
+        switchTab('contact');
+    });
+
+    // Start-Zustand: Logbuch schreiben
+    console.log("Code-Werft System v1.4: Projekt-Navigation bereit.");
 });
