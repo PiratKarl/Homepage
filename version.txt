@@ -1,0 +1,7 @@
+CODE-WERFT_PORTAL_V1.2.0_DOCK_CONTROL
+Status: Stable
+Build: 2026-02-08
+Modules: 
+- Dock-Grid (Portfolio View)
+- Aura Pro Interface (Linked)
+- Smart Kombüse (Placeholder/In Construction)

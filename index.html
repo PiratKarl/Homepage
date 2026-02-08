@@ -1,189 +1,102 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Code‑Werft — Aura Weather Station</title>
-  <meta name="description" content="Alte Tablets neu nutzen — kostenlose Web‑Apps wie Aura Weather Station. Entwickelt in Braunschweig." />
-  <style>
-    :root{
-      --bg:#f7fbff; --card:#ffffff; --text:#0b2540; --muted:#556b7a;
-      --accent:#ffb400; --accent-2:#0b84ff; --radius:10px; --maxw:1100px;
-      --logo-color:#0bb0c8; /* Hauptfarbe des SVG-Logos */
-      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef6ff);color:var(--text);line-height:1.45}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
-    header.site{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:14px;font-weight:700;color:var(--text);letter-spacing:0.2px}
-    /* feste Größe für Firmenlogo links neben dem Namen */
-    .brand-logo-svg{height:72px;width:auto;display:block}
-    .brand-text{line-height:1}
-    .brand-text .title{font-size:18px;font-weight:800}
-    .brand-text .tag{font-size:12px;color:var(--muted);margin-top:2px}
-    nav a{margin-left:18px;color:var(--muted);text-decoration:none;font-weight:600}
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:36px 0}
-    .hero h1{font-size:28px;margin:0 0 12px}
-    .lead{color:var(--muted);margin:0 0 18px}
-    .btn{display:inline-block;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
-    .btn-primary{background:var(--accent-2);color:#fff}
-    .btn-ghost{background:transparent;border:2px solid rgba(11,132,255,0.12);color:var(--accent-2)}
-    .hero-benefits{display:flex;gap:10px;margin:18px 0 0;padding:0;list-style:none}
-    .hero-benefits li{background:rgba(11,132,255,0.06);padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:600}
-    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 6px 18px rgba(11,36,60,0.06)}
-    .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:18px}
-    .app-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
-    .app-card{padding:14px;border-radius:10px;border:1px solid #eef6ff;background:linear-gradient(180deg,#fff,#fbfdff)}
-    main.app-page{padding:28px 0}
-    h2{margin-top:0;color:var(--text)}
-    ul{margin:0 0 12px 20px}
-    ol{margin:0 0 12px 20px}
-    .faq dl{margin:0}
-    .faq dt{font-weight:700;margin-top:12px}
-    .contact-form{display:grid;gap:10px;max-width:640px}
-    input,textarea,select{padding:10px;border-radius:8px;border:1px solid #e6eef6;font-size:15px}
-    footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid #e9f2fb;margin-top:28px}
-    .auralogo{width:320px;max-width:70%;height:auto;display:block;margin:0 auto 12px;object-fit:contain}
-    .hero-image img{width:420px;height:300px;object-fit:cover;border-radius:8px;display:block}
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr; text-align:center}
-      .hero-image{order:-1}
-      .brand-logo-svg{height:56px}
-      .auralogo{width:220px}
-      .hero-image img{width:100%;height:auto}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code-Werft | Dock Control</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header class="site" role="banner">
-      <div class="brand" aria-label="Code‑Werft">
-        <!-- Inline SVG-Logo (transparent background) -->
-        <svg class="brand-logo-svg" viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="logoTitle logoDesc">
-          <title id="logoTitle">Code‑Werft Logo</title>
-          <desc id="logoDesc">Stilisiertes Schiff mit Monitor und Code‑Symbol, Text CODE‑WERFT und WEBAPP ENTWICKLER</desc>
 
-          <!-- Waves -->
-          <g fill="none" stroke="var(--logo-color)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
-            <path d="M20 150 C80 130 140 170 200 150" />
-            <path d="M200 150 C260 130 320 170 380 150" />
-            <path d="M380 150 C440 130 500 170 560 150" />
-          </g>
-
-          <!-- Ship hull -->
-          <g transform="translate(40,40)">
-            <path d="M40 90 L260 90 C280 90 300 80 320 60 L320 60 C300 80 280 90 260 90 L40 90 Z"
-                  fill="var(--logo-color)" opacity="0.98" />
-            <!-- portholes -->
-            <circle cx="90" cy="75" r="8" fill="#fff" />
-            <circle cx="150" cy="75" r="8" fill="#fff" />
-            <circle cx="210" cy="75" r="8" fill="#fff" />
-          </g>
-
-          <!-- Monitor on deck -->
-          <g transform="translate(120,0)">
-            <rect x="120" y="10" width="140" height="90" rx="10" ry="10" fill="var(--logo-color)" />
-            <rect x="150" y="30" width="80" height="50" rx="6" ry="6" fill="#ffffff" />
-            <!-- code symbol -->
-            <text x="190" y="66" text-anchor="middle" font-family="monospace" font-size="28" fill="var(--logo-color)" font-weight="700">&lt;/&gt;</text>
-            <!-- monitor stand -->
-            <rect x="185" y="100" width="30" height="8" rx="3" ry="3" fill="var(--logo-color)" />
-          </g>
-
-          <!-- Flag -->
-          <g transform="translate(320,10)">
-            <rect x="0" y="0" width="6" height="28" fill="var(--logo-color)" />
-            <path d="M6 4 L26 10 L6 16 Z" fill="var(--logo-color)" />
-          </g>
-
-          <!-- Text: CODE-WERFT -->
-          <g transform="translate(0,140)">
-            <text x="340" y="28" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="36" font-weight="800" fill="var(--logo-color)" letter-spacing="1">CODE‑WERFT</text>
-            <text x="342" y="58" font-family="Segoe UI, Roboto, Arial, sans-serif" font-size="12" fill="var(--muted)" letter-spacing="1">WEBAPP ENTWICKLER</text>
-          </g>
-        </svg>
-
-        <div class="brand-text" aria-hidden="true">
-          <div class="title">Code‑Werft</div>
-          <div class="tag">Alte Tablets neu nutzen</div>
+    <header>
+        <div class="header-left">
+            <img src="code-werftgross.png" alt="Logo" class="header-logo">
+            <div class="brand">
+                <h1>CODE-WERFT</h1>
+                <p>Webapp Entwicklung</p>
+            </div>
         </div>
-      </div>
-
-      <nav role="navigation" aria-label="Hauptnavigation">
-        <a href="#hero">Start</a>
-        <a href="#apps">Leistungen</a>
-        <a href="#news">News</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+        <nav class="top-nav">
+            <a href="#" id="nav-werft" class="active">WERFT</a>
+            <a href="#" id="nav-aura">AURA</a>
+        </nav>
     </header>
 
-    <!-- HERO -->
-    <section id="hero" class="hero" aria-labelledby="hero-title">
-      <div>
-        <h1 id="hero-title">Alte Tablets neu nutzen — kostenlose Web‑Apps für praktische Einsatzgeräte</h1>
-        <p class="lead">Wir verwandeln ausgediente Tablets in nützliche Geräte: Wetterstationen, Info‑Displays oder Steuerpanels. Leichtgewichtig, offline‑fähig und sofort einsatzbereit.</p>
-        <a class="btn btn-primary" href="https://aura.code-werft.de" target="_blank" rel="noopener">Jetzt Starten</a>
-        <ul class="hero-benefits" aria-hidden="false">
-          <li>Verwandelt alte Tablets in praktische Geräte</li>
-          <li>Leichtgewichtige Apps, laufen auch offline</li>
-          <li>Kostenlos, wartungsarm und einfach zu installieren</li>
-        </ul>
-      </div>
-      <div class="card hero-image" aria-hidden="false">
-        <img src="auraschreibt.jpg" alt="Tablet auf Schreibtisch mit Aura Weather Station" />
-      </div>
-    </section>
+    <main>
+        
+        <section id="section-werft" class="content-section active">
+            
+            <div class="welcome-panel">
+                <h2>Digitale Maßarbeit aus der Werft.</h2>
+                <p>
+                    Willkommen an Deck. Wir entwickeln hochperformante Web-Applikationen 
+                    und smarte IoT-Schnittstellen für das vernetzte Zuhause. <br>
+                    <strong>Präzises Handwerk – von der Kiellegung bis zum Stapellauf.</strong>
+                </p>
+                <div class="skills-tag-container">
+                    <span class="skill-tag">WEB-APPS</span>
+                    <span class="skill-tag">UI / UX DESIGN</span>
+                    <span class="skill-tag">SMART HOME</span>
+                </div>
+            </div>
 
-    <!-- restliche Seite unverändert (gekürzt für Übersicht) -->
-    <section id="apps" style="margin-top:22px">
-      <div class="card">
-        <h2>Unsere Web‑Apps</h2>
-        <p>Fertige, kostenlose Web‑Apps für konkrete Einsatzszenarien. Jede App ist als Progressive Web App verfügbar und für Dauerbetrieb optimiert.</p>
-        <div class="app-list" role="list">
-          <article class="app-card" role="listitem" aria-labelledby="aura-title">
-            <h3 id="aura-title">Aura Weather Station</h3>
-            <p>Verwandelt alte Tablets in zuverlässige Wetterstationen. Daten von OpenWeather und DWD, Unwetterwarnungen und Weltwetter‑Ticker.</p>
-            <a class="btn btn-ghost" href="#aura">Mehr erfahren</a>
-          </article>
-        </div>
-      </div>
-    </section>
+            <div class="dock-grid">
+                
+                <div class="dock-card active-project" onclick="switchTab('aura')">
+                    <div class="card-status status-live">● SYSTEM LIVE</div>
+                    <h3>Aura Wetterstation</h3>
+                    <p>Version V83.1 Pro</p>
+                    <div class="card-meta">Standort: Wohnzimmer</div>
+                </div>
 
-    <main id="aura" class="app-page" aria-labelledby="aura-main-title">
-      <div class="card">
-        <header class="app-header" style="text-align:center">
-          <img src="auralogo.png" alt="Aura Logo" class="auralogo" />
-          <h1 id="aura-main-title">Aura Weather Station</h1>
-          <p class="lead">Verwandelt alte Tablets in zuverlässige Wetterstationen — optimiert für ältere Hardware.</p>
-        </header>
+                <div class="dock-card construction-project">
+                    <div class="card-status status-build">● IM BAU</div>
+                    <h3>Smart Kombüse</h3>
+                    <p>Küchen-Management</p>
+                    <div class="card-meta">Rollout: Q3 2026</div>
+                </div>
 
-        <!-- Funktionen, Anleitung, CTA -->
-        <section style="margin-top:18px;text-align:center">
-          <a class="btn btn-primary" href="https://aura.code-werft.de" target="_blank" rel="noopener">Web App starten</a>
+                <div class="dock-card maintenance-project">
+                    <div class="card-status status-wait">● WARTUNG</div>
+                    <h3>Werft Core</h3>
+                    <p>Server & Infrastruktur</p>
+                    <div class="card-meta">Uptime: 99.9%</div>
+                </div>
+
+            </div>
         </section>
-      </div>
+
+
+        <section id="section-aura" class="content-section" style="display: none;">
+            <h2>Projekt: Aura Wetterstation</h2>
+
+            <div class="project-container">
+                <div class="project-title-block">
+                    <img src="wohnzimmerstandart.jpg" alt="Aura Pro Ansicht" class="project-hero-img">
+                    <div class="caption-text">
+                        Anwendungsbeispiel: Wandmontage im Wohnzimmer
+                    </div>
+                    <div class="project-title">
+                        AURA Wetterstation Pro
+                    </div>
+                </div>
+                
+                <a href="https://aura.code-werft.de" target="_blank" class="btn-start">
+                    ▶ HIER KLICKEN ZUM STARTEN
+                </a>
+
+                <div class="status-text">
+                    Live-System • Dark Mode • Pro-Edition
+                </div>
+            </div>
+        </section>
+
+        <p class="description-footer">
+            System Status: All Systems Operational.<br>
+            Code-Werft Internal Network.
+        </p>
     </main>
 
-    <!-- Footer (gekürzt) -->
-    <footer style="margin-top:28px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <div>© <strong>Code‑Werft</strong> — Lohengrinstr. 25, 38106 Braunschweig</div>
-        <div><a href="#impressum">Impressum</a> · <a href="#datenschutz">Datenschutz</a></div>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    // Formular-Feedback (falls Backend nicht konfiguriert)
-    document.getElementById('contactForm')?.addEventListener('submit', function(e){
-      const action = this.getAttribute('action') || '';
-      if(action === '/kontakt/submit'){
-        e.preventDefault();
-        alert('Formular abgeschickt. Bitte passe die Formular‑Action an dein Backend oder ersetze diese Meldung.');
-      }
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
-              </html>
+</html>
