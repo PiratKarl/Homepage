@@ -99,27 +99,27 @@
                 <h2>Funkspruch senden</h2>
                 <p>Senden Sie Ihre Anfrage direkt ins Dock.</p>
 
-                <form class="contact-form" action="mailto:webmaster@code-werft.de" method="post" enctype="text/plain">
+                <form class="contact-form" action="https://formsubmit.co/webmaster@code-werft.de" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://code-werft.de">
+                
                     <div class="form-group">
                         <label>Name / Rufzeichen</label>
                         <input type="text" name="Name" placeholder="Ihr Name" required>
                     </div>
-
+                
                     <div class="form-group">
                         <label>Rückkanal (E-Mail)</label>
                         <input type="email" name="Email" placeholder="ihre@email.de" required>
                     </div>
-
+                
                     <div class="form-group">
                         <label>Logbucheintrag</label>
-                        <textarea name="Nachricht" rows="5" placeholder="Wie können wir helfen?" required></textarea>
+                        <textarea name="Nachricht" placeholder="Ihre Nachricht an das Dock..." required></textarea>
                     </div>
-
-                    <button type="submit" class="action-btn">Absenden</button>
+                
+                    <button type="submit" class="action-btn">FUNKSPRUCH ABSENDEN</button>
                 </form>
-            </div>
-        </section>
-
         <p class="description-footer">
             System Status: All Systems Operational.<br>
             Code-Werft Internal Network V2.1
