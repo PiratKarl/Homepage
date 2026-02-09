@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #0a0a0a; /* Tiefschwarz */
+    background-color: #0a0a0a;
     color: #e0e0e0;
     line-height: 1.6;
 }
@@ -17,13 +17,13 @@ a {
     color: inherit;
 }
 
-/* --- NAVIGATION (Original - Nicht fixiert) --- */
+/* --- NAVIGATION --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 3rem;
-    background-color: #0a0a0a; /* Gleiches Schwarz wie Body */
+    background-color: #0a0a0a;
     border-bottom: 1px solid #1f1f1f;
 }
 
@@ -222,7 +222,7 @@ nav {
 }
 .action-btn:hover { background: #00d2ff; color: #000; }
 
-/* --- FOOTER (Ganz unten) --- */
+/* --- FOOTER (NEU) --- */
 .site-footer {
     background-color: #050505;
     padding: 3rem 0;
@@ -238,10 +238,10 @@ nav {
 .footer-nav a:hover { color: #00d2ff; }
 .separator { color: #333; }
 
-/* --- IMPRESSUM & DATENSCHUTZ SEITEN --- */
+/* --- IMPRESSUM SEITEN --- */
 .legal-page {
     max-width: 800px;
-    margin: 60px auto 4rem auto;
+    margin: 80px auto 4rem auto;
     padding: 2rem;
     color: #ccc;
     line-height: 1.8;
