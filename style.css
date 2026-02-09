@@ -372,10 +372,7 @@ canvas {
     color: #00d2ff !important;
     text-shadow: 0 0 15px rgba(0, 210, 255, 0.6);
 }
-    font-size: 2.8rem !important;  /* Das ist jetzt richtig groß */
-    font-weight: 800 !important;   /* Extra fett */
-    letter-spacing: 2px;           /* Etwas breiter für den Tech-Look */
-}
+
 
 /* Falls das Bild (Icon) auch mitwachsen soll: */
 .logo img {
