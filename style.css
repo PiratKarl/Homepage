@@ -17,20 +17,14 @@ a {
     color: inherit;
 }
 
-/* --- NAVIGATION (Oben Fixiert) --- */
+/* --- NAVIGATION (Original - Nicht fixiert) --- */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.0rem 3rem; /* Etwas kompakter */
-    background-color: rgba(10, 10, 10, 0.95);
-    position: fixed; /* Klebt oben fest */
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    padding: 1.5rem 3rem;
+    background-color: #0a0a0a; /* Gleiches Schwarz wie Body */
     border-bottom: 1px solid #1f1f1f;
-    height: 80px; /* Feste Höhe für den Header */
 }
 
 .logo-container {
@@ -40,7 +34,7 @@ nav {
 }
 
 .logo {
-    height: 50px; /* Logo Größe */
+    height: 40px;
     width: auto;
 }
 
@@ -52,7 +46,7 @@ nav {
 .brand-name {
     font-weight: 700;
     font-size: 1.2rem;
-    color: #00d2ff; /* Aura Cyan */
+    color: #00d2ff;
     letter-spacing: 2px;
 }
 
@@ -76,12 +70,11 @@ nav {
 
 /* --- HERO SECTION --- */
 .hero {
-    height: 85vh; /* Fast volle Höhe */
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 80px; /* Platz für die Navi oben */
     background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
 }
 
@@ -129,9 +122,7 @@ nav {
     justify-content: center;
     gap: 20px;
     padding: 2rem;
-    margin-top: -60px; /* Zieht Karten leicht in den Hero Bereich */
-    position: relative;
-    z-index: 10;
+    margin-top: -50px;
     flex-wrap: wrap;
 }
 
@@ -159,14 +150,7 @@ nav {
     gap: 8px;
 }
 
-.status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: inline-block;
-}
-
-/* Farben */
+.status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
 .live .status-dot { background-color: #00d2ff; box-shadow: 0 0 8px #00d2ff; }
 .live .card-header { color: #00d2ff; }
 .building .status-dot { background-color: #ffaa00; }
@@ -180,7 +164,7 @@ nav {
 
 /* --- PROJEKTE --- */
 .projects-section {
-    padding: 5rem 2rem;
+    padding: 4rem 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -201,20 +185,10 @@ nav {
 
 .project-image { flex: 1; }
 .project-image img { width: 100%; height: 100%; object-fit: cover; }
-
-.project-info {
-    flex: 1;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
+.project-info { flex: 1; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
 .project-info h3 { color: #fff; font-size: 1.5rem; margin-bottom: 1rem; }
-
 .features-list { list-style: none; margin: 1.5rem 0; color: #aaa; }
 .features-list li::before { content: "▹"; color: #00d2ff; margin-right: 10px; }
-
 .project-btn {
     display: inline-block;
     background: #00d2ff;
@@ -227,52 +201,28 @@ nav {
 }
 
 /* --- KONTAKT FORMULAR --- */
-.content-panel {
-    padding: 4rem 2rem;
-    display: flex;
-    justify-content: center;
-}
-
+.content-panel { padding: 4rem 2rem; display: flex; justify-content: center; }
 .contact-container {
-    width: 100%;
-    max-width: 600px;
-    background: #111;
-    padding: 2rem;
-    border-radius: 8px;
-    border: 1px solid #222;
+    width: 100%; max-width: 600px; background: #111; padding: 2rem;
+    border-radius: 8px; border: 1px solid #222;
 }
-
 .contact-container h2 { color: #00d2ff; margin-bottom: 0.5rem; }
 .contact-form { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
 .form-group label { font-size: 0.9rem; color: #888; }
-
 .form-group input, .form-group textarea {
-    background: #0a0a0a;
-    border: 1px solid #333;
-    padding: 12px;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 1rem;
+    background: #0a0a0a; border: 1px solid #333; padding: 12px;
+    color: #fff; border-radius: 4px; font-size: 1rem;
 }
-
 .form-group input:focus, .form-group textarea:focus { border-color: #00d2ff; outline: none; }
 .form-group textarea { min-height: 150px; resize: vertical; }
-
 .action-btn {
-    background: transparent;
-    border: 1px solid #00d2ff;
-    color: #00d2ff;
-    padding: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: 0.3s;
+    background: transparent; border: 1px solid #00d2ff; color: #00d2ff;
+    padding: 12px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s;
 }
-
 .action-btn:hover { background: #00d2ff; color: #000; }
 
-/* --- FOOTER & RECHTLICHES (GANZ UNTEN) --- */
+/* --- FOOTER (Ganz unten) --- */
 .site-footer {
     background-color: #050505;
     padding: 3rem 0;
@@ -280,39 +230,26 @@ nav {
     border-top: 1px solid #1a1a1a;
     text-align: center;
     color: #888;
-    position: relative; /* Normal im Fluss */
-    clear: both; /* Unter alles drunter */
 }
 
 .footer-nav a {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 0.9rem;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+    color: #aaa; text-decoration: none; font-size: 0.9rem; margin: 0 10px; transition: color 0.3s ease;
 }
-
 .footer-nav a:hover { color: #00d2ff; }
 .separator { color: #333; }
 
-/* --- SEITEN: IMPRESSUM & DATENSCHUTZ --- */
+/* --- IMPRESSUM & DATENSCHUTZ SEITEN --- */
 .legal-page {
     max-width: 800px;
-    margin: 120px auto 4rem auto; /* 120px von oben, damit es nicht unter der Navi klebt */
+    margin: 60px auto 4rem auto;
     padding: 2rem;
     color: #ccc;
     line-height: 1.8;
 }
-
 .legal-page h1 { color: #00d2ff; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem; }
 .legal-page h2 { color: #fff; margin-top: 3rem; margin-bottom: 1rem; }
 .legal-button {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: #00d2ff;
-    border: 1px solid #333;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    display: inline-block; margin-bottom: 2rem; color: #00d2ff;
+    border: 1px solid #333; padding: 8px 16px; border-radius: 4px; font-size: 0.9rem;
 }
 .legal-button:hover { border-color: #00d2ff; }
