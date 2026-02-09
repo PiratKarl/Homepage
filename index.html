@@ -3,94 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code-Werft | Dock Control</title>
+    <title>Code Werft | Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
-        <div class="logo-container">
-            <img src="code-werftgross.png" alt="Code Werft Logo" class="logo">
-            <div class="brand-text">
-                <span class="brand-name">CODE-WERFT</span>
-                <span class="brand-slogan">WEBAPP ENTWICKLUNG</span>
-            </div>
-        </div>
-        <div class="nav-links">
-            <a href="index.html" class="active">WERFT</a>
-            <a href="projekte.html">PROJEKTE</a>
-        </div>
+    <nav class="navbar">
+        <div class="logo">CODE WERFT</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="projekte.html">Projekte</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Digitale Maßarbeit aus der Werft.</h1>
-            <p>Willkommen an Deck. Wir entwickeln hochperformante Web-Applikationen und smarte IoT-Schnittstellen für das vernetzte Zuhause.</p>
-            <p class="highlight">Präzises Handwerk – von der Kiellegung bis zum Stapellauf.</p>
-            
-            <div class="cta-buttons">
-                <a href="projekte.html" class="btn">ZU DEN PROJEKTEN</a>
-                <a href="#contact-panel" class="btn">FUNKSPRUCH</a>
+            <h1>WILLKOMMEN AN BORD</h1>
+            <p class="subtitle">Digitale Manufaktur & Smart Home Lösungen</p>
+            <div class="status-badge">
+                <span class="status-dot"></span> SYSTEM LIVE
             </div>
         </div>
     </header>
 
-    <section class="status-dashboard">
-        <div class="status-card live">
-            <div class="card-header"><span class="status-dot"></span> SYSTEM LIVE</div>
-            <h3>Aura Wetterstation</h3>
-            <p class="version">Version V83.1 Pro</p>
-            <div class="card-footer"><span>Standort: Wohnzimmer</span></div>
-        </div>
-
-        <div class="status-card building">
-            <div class="card-header"><span class="status-dot"></span> IM BAU</div>
-            <h3>Smart Kombüse</h3>
-            <p class="version">Küchen-Management</p>
-            <div class="card-footer"><span>Rollout: Q3 2026</span></div>
-        </div>
-
-        <div class="status-card maintenance">
-            <div class="card-header"><span class="status-dot"></span> WARTUNG</div>
-            <h3>Werft Core</h3>
-            <p class="version">Server & Infrastruktur</p>
-            <div class="card-footer"><span>Uptime: 99.9%</span></div>
+    <section class="projects" id="projekte">
+        <h2 class="section-title">Flaggschiff</h2>
+        <div class="project-card">
+            <div class="project-image">
+                <img src="wohnzimmerstandart.jpg" alt="Aura Wetterstation im Wohnzimmer">
+            </div>
+            <div class="project-info">
+                <h3>Aura Wetterstation Pro</h3>
+                <p>Das Flaggschiff der Code-Werft. Eine hochpräzise Wetterstation mit E-Ink Display und nahtloser Home Assistant Integration.</p>
+                <ul class="features-list">
+                    <li>Echtzeit-Datenvisualisierung</li>
+                    <li>ESP32 Architektur</li>
+                    <li>3D-Druck Gehäuse (Manufaktur)</li>
+                </ul>
+                <a href="projekte.html" class="project-btn">LOGBUCH ANSEHEN</a>
+            </div>
         </div>
     </section>
 
-    <section id="contact-panel" class="content-panel">
-        <div class="contact-container">
-            <h2>Funkspruch senden</h2>
-            <p>Senden Sie Ihre Anfrage direkt ins Dock.</p>
-
-            <form class="contact-form" action="https://formsubmit.co/karl67rosi58@gmail.com" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://code-werft.de">
-                <div class="form-group">
-                    <label>Name / Rufzeichen</label>
-                    <input type="text" name="Name" placeholder="Ihr Name" required>
-                </div>
-                <div class="form-group">
-                    <label>Rückkanal (E-Mail)</label>
-                    <input type="email" name="Email" placeholder="ihre@email.de" required>
-                </div>
-                <div class="form-group">
-                    <label>Logbucheintrag</label>
-                    <textarea name="Nachricht" placeholder="Ihre Nachricht an das Dock..." required></textarea>
-                </div>
-                <button type="submit" class="action-btn">FUNKSPRUCH ABSENDEN</button>
-            </form>
-        </div>
-    </section>
-
-    <footer class="site-footer">
+    <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Code-Werft | Private Manufaktur</p>
-            <nav class="footer-nav">
-                <a href="impressum.html">Impressum</a>
-                <span class="separator">|</span>
-                <a href="datenschutz.html">Datenschutz</a>
-            </nav>
+            <p>&copy; 2026 Code Werft. Alle Systeme online.</p>
+            <ul class="footer-links">
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
         </div>
     </footer>
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Code Werft</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">CODE WERFT</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projekte.html">Projekte</a></li>
+            <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section class="contact-page-section" style="padding: 8rem 5%; max-width: 1200px; margin: 0 auto;">
+        
+        <h1 class="section-title" style="text-align: left; margin-bottom: 2rem;">Funksprüche</h1>
+        
+        <div class="contact-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+            
+            <div class="contact-info">
+                <div class="blueprint-card">
+                    <h3>Hauptquartier</h3>
+                    <p style="margin-bottom: 1.5rem; color: #ccc;">
+                        <strong>Karl Altmannshofer</strong><br>
+                        Lohengrinstr. 25<br>
+                        38106 Braunschweig<br>
+                        Germany
+                    </p>
+                    
+                    <h3>Kommunikation</h3>
+                    <p style="margin-bottom: 1.5rem; color: #ccc;">
+                        <strong>E-Mail:</strong> webmaster@code-werft.de<br>
+                        <strong>Tel:</strong> +49 (0) 531 38 72 9371
+                    </p>
+
+                    <h3>Status</h3>
+                    <div class="status-indicator" style="margin-top: 1rem;">
+                        <span class="status-dot"></span> SYSTEM ONLINE
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-wrapper">
+                <form action="https://formsubmit.co/webmaster@code-werft.de" method="POST" class="contact-form">
+                    <input type="hidden" name="_next" value="https://code-werft.de/kontakt.html">
+                    <input type="hidden" name="_subject" value="Neuer Funkspruch von der Code-Werft!">
+                    <input type="hidden" name="_captcha" value="false">
+
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Name / Callsign" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="E-Mail Frequenz" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Nachricht entschlüsseln..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">NACHRICHT SENDEN</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Code Werft. Alle Systeme online.</p>
+            <ul class="footer-links">
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
+        </div>
+    </footer>
+    
+    <style>
+        @media (max-width: 768px) {
+            .contact-container { grid-template-columns: 1fr !important; gap: 2rem !important; }
+        }
+    </style>
+</body>
+</html>

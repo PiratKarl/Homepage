@@ -3,36 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekte | Code-Werft</title>
+    <title>Projekte | Code Werft</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
-        <div class="logo-container">
-            <a href="index.html">
-                <img src="code-werftgross.png" alt="Code Werft Logo" class="logo">
-            </a>
-            <div class="brand-text">
-                <span class="brand-name">CODE-WERFT</span>
-                <span class="brand-slogan">WEBAPP ENTWICKLUNG</span>
-            </div>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">WERFT</a>
-            <a href="projekte.html" class="active">PROJEKTE</a>
-        </div>
+    <nav class="navbar">
+        <div class="logo">CODE WERFT</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projekte.html" class="active">Projekte</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
     </nav>
 
-    <div style="height: 120px; background: #0a0a0a;"></div>
-
-    <section class="projects-section">
+    <section class="projects-page-content" style="padding-top: 8rem;">
         
-        <h1 class="section-title">Unsere Flotte</h1>
-        <p style="text-align: center; color: #888; margin-bottom: 4rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Ein Überblick über alle aktiven Systeme, laufende Konstruktionen und zukünftige Entwicklungen der Werft.
-        </p>
-
         <h2 class="section-title" style="font-size: 1.2rem; border: none; color: #00d2ff;">Flaggschiff</h2>
         <div class="project-card">
             <div class="project-image">
@@ -50,16 +37,17 @@
             </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 4rem; font-size: 1.2rem; border: none; color: #ffaa00;">Im Trockendock</h2>
+        <h2 class="section-title" style="margin-top: 4rem; font-size: 1.2rem; border: none; color: #ffae00;">Werft-Arbeiten</h2>
         <div class="blueprint-card">
             <div class="blueprint-header">
-                <span class="status-dot building"></span> IN ARBEIT
+                <span class="status-dot warning"></span> IN ENTWICKLUNG
             </div>
             <h3>Smarte Kombüse</h3>
-            <p>Ein intelligentes System für das Vorrats-Management in der Küche. Überwacht Bestände, Mindesthaltbarkeitsdaten und generiert automatisch Vorschläge für den Einkauf.</p>
+            <p>Ein intelligentes Inventar-System für die moderne Küche. Verfolgt Bestände, Mindesthaltbarkeitsdaten und generiert automatische Nachbestellungen.</p>
             <ul class="features-list compact">
                 <li>Barcode-Scanner Integration</li>
-                <li>Inventar-Datenbank (SQL)</li>
+                <li>Rezept-Datenbank Kopplung</li>
+                <li>Automatische Einkaufslisten-Generierung</li>
             </ul>
         </div>
 
@@ -79,14 +67,13 @@
 
     </section>
 
-    <footer class="site-footer">
+    <footer>
         <div class="footer-content">
-            <p>&copy; 2026 Code-Werft | Private Manufaktur</p>
-            <nav class="footer-nav">
-                <a href="impressum.html">Impressum</a>
-                <span class="separator">|</span>
-                <a href="datenschutz.html">Datenschutz</a>
-            </nav>
+            <p>&copy; 2026 Code Werft. Alle Systeme online.</p>
+            <ul class="footer-links">
+                <li><a href="impressum.html">Impressum</a></li>
+                <li><a href="datenschutz.html">Datenschutz</a></li>
+            </ul>
         </div>
     </footer>
 
