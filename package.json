@@ -1,0 +1,11 @@
+{
+    "name": "code-werft",
+    "version": "1.0.0",
+    "description": "Private Manufaktur",
+    "scripts": {
+      "start": "npx serve ."
+    },
+    "dependencies": {
+      "serve": "^14.2.0"
+    }
+  }

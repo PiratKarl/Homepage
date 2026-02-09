@@ -162,33 +162,45 @@ nav {
 .version { color: #888; font-size: 0.9rem; margin-bottom: 1.5rem; }
 .card-footer { border-top: 1px solid #222; padding-top: 10px; font-size: 0.8rem; color: #555; font-family: monospace; }
 
-/* --- PROJEKTE --- */
+/* --- PROJEKTE & BLUEPRINTS --- */
 .projects-section {
     padding: 4rem 2rem;
-    max-width: 1200px;
+    max-width: 1000px; /* Etwas schmaler für besseren Lesefluss */
     margin: 0 auto;
 }
 
-.projects-section h2 {
+.section-title {
     text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 1px solid #222;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
+/* Große Projekt Karte (mit Bild) */
 .project-card {
     display: flex;
     background: #111;
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid #222;
+    margin-bottom: 3rem;
 }
 
-.project-image { flex: 1; }
+.project-image { flex: 1; min-width: 300px; }
 .project-image img { width: 100%; height: 100%; object-fit: cover; }
+
 .project-info { flex: 1; padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
 .project-info h3 { color: #fff; font-size: 1.5rem; margin-bottom: 1rem; }
+
+/* Features Liste */
 .features-list { list-style: none; margin: 1.5rem 0; color: #aaa; }
 .features-list li::before { content: "▹"; color: #00d2ff; margin-right: 10px; }
+.features-list.compact { margin: 1rem 0; font-size: 0.9rem; }
+
 .project-btn {
     display: inline-block;
     background: #00d2ff;
@@ -199,6 +211,38 @@ nav {
     font-size: 0.8rem;
     width: fit-content;
 }
+
+/* Blueprint Karten (Für Projekte ohne Bild) */
+.blueprint-card {
+    background: #0e0e0e; /* Etwas dunkler */
+    border: 1px dashed #333; /* Gestrichelte Linie wie auf Plan */
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.blueprint-header {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blueprint-card h3 {
+    color: #ddd;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.blueprint-card p {
+    color: #999;
+    max-width: 800px;
+}
+
 
 /* --- KONTAKT FORMULAR --- */
 .content-panel { padding: 4rem 2rem; display: flex; justify-content: center; }
@@ -222,7 +266,7 @@ nav {
 }
 .action-btn:hover { background: #00d2ff; color: #000; }
 
-/* --- FOOTER (NEU) --- */
+/* --- FOOTER --- */
 .site-footer {
     background-color: #050505;
     padding: 3rem 0;
@@ -238,7 +282,7 @@ nav {
 .footer-nav a:hover { color: #00d2ff; }
 .separator { color: #333; }
 
-/* --- IMPRESSUM SEITEN --- */
+/* --- IMPRESSUM --- */
 .legal-page {
     max-width: 800px;
     margin: 80px auto 4rem auto;
