@@ -370,6 +370,6 @@ canvas {
 
 /* Falls das Bild (Icon) auch mitwachsen soll: */
 .logo img {
-    height: 85px !important;       /* War vorher 50px */
+    height: 90px !important;       /* War vorher 50px */
     margin-right: 20px !important; /* Mehr Abstand zum Text */
 }
