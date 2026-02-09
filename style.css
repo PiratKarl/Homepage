@@ -345,3 +345,19 @@ nav {
     color: #000;
     box-shadow: 0 0 20px rgba(0, 210, 255, 0.6);
 }
+/* --- NOTFALL-FIX FÜR KLICKBARE LINKS --- */
+
+/* 1. Hintergrund (Canvas) ganz nach hinten schieben */
+canvas {
+    z-index: -1 !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+/* 2. Navigation und Inhalte nach vorne holen */
+.navbar, .hero-content, .hero-btn {
+    position: relative !important;
+    z-index: 999 !important; /* Ganz weit vorne */
+    pointer-events: auto !important; /* Klicks erlauben */
+}
